@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Automata · Rivio Labs</title>
+<meta name="description" content="A plataforma de browser use da Rivio: transforma uma demonstração humana em automação confiável, que roda em escala e se adapta quando a interface muda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/product.css">
+</head>
+<body class="product" data-project="automata" style="--accent: #B08CF0; --accent-rgb: 176, 140, 240;">
+<header class="p-top">
+  <a class="brand" href="../" aria-label="Rivio Labs">
+    <img src="../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Projetos">
+    <ul class="p-index"></ul>
+    <a class="p-back" href="../">← Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <canvas data-visual="interface" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow">Automata</p>
+      <h1>Se uma pessoa faz na web, um agente também faz</h1>
+      <p class="lede">A plataforma de browser use da Rivio: transforma uma demonstração humana em automação confiável, que roda em escala e se adapta quando a interface muda.</p>
+      <span class="cue">Role para explorar</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s1">
+    <div class="label-col"><p class="label" id="s1"><b>01</b> A tese</p></div>
+    <div class="body-col"><p class="statement reveal">Boa parte da saúde ainda acontece dentro de portais: elegibilidade, autorização, envio de faturamento, consulta de demonstrativos, recurso de glosa. Cada operadora tem o seu, sem API e mudando sem aviso. Integrar um por um não escala. <span>O Automata trata a interface como a própria integração: aprende observando uma pessoa e executa como um agente.</span></p></div>
+  </section>
+
+  <section class="section" aria-labelledby="s2">
+    <div class="label-col"><p class="label" id="s2"><b>02</b> O que muda</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Ensinar, em vez de programar</h2>
+      <ol class="pillars reveal">
+        <li><span class="n">01</span><h3>Uma demonstração basta</h3><p>Quem conhece o processo faz a tarefa uma vez. Sem escrever código, a operação cria e corrige os próprios fluxos.</p></li>
+        <li><span class="n">02</span><h3>Dois executores</h3><p>Um replay determinístico, rápido e barato, e um executor agêntico que entende a intenção de cada passo.</p></li>
+        <li><span class="n">03</span><h3>Resiliente à mudança</h3><p>Quando a tela muda, o agente encontra o caminho de novo. O modelo só é chamado quando algo mudou de verdade.</p></li>
+        <li><span class="n">04</span><h3>Privado por construção</h3><p>Senhas e dados pessoais viram marcadores no momento em que são digitados e nunca entram em registros nem em prompts.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s3">
+    <div class="label-col"><p class="label" id="s3"><b>03</b> Na prática</p><p class="caption">Cenário ilustrativo</p></div>
+    <div class="body-col">
+      <h2 class="reveal">A mesma tarefa, antes e depois de a interface mudar</h2>
+      <div class="module m-replay">
+        <div class="module-head"><span><strong>Tarefa gravada:</strong> anexar um documento a uma guia</span><span class="caption">Uma demonstração · dois executores</span></div>
+        <div class="stage">
+          <div class="browser" aria-hidden="true">
+            <div class="bar"><i></i><i></i><i></i><span></span></div>
+            <div class="page">
+              <div class="side"><i></i><i></i><i></i><i></i></div>
+              <div class="main">
+                <div class="field" data-step><i></i><i></i></div>
+                <div class="field" data-step><i></i><i></i></div>
+                <div class="field" data-step><i></i><i></i></div>
+                <span class="cta-btn" data-step>Enviar</span>
+                <div class="field" data-step><i></i><i></i></div>
+              </div>
+              <span class="cursor"></span>
+            </div>
+          </div>
+          <div class="rails">
+            <div class="rail"><h4>Replay determinístico <span>seletores gravados</span></h4><div class="steps"><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="rail"><h4>Executor agêntico <span>intenção de cada passo</span></h4><div class="steps"><i></i><i></i><i></i><i></i><i></i></div></div>
+            <p class="note" aria-live="polite">Primeira execução: o fluxo gravado roda nos dois executores.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s4">
+    <div class="label-col"><p class="label" id="s4"><b>04</b> Antes e depois</p></div>
+    <div class="body-col">
+      <div class="compare reveal">
+        <div><h3>Hoje</h3><ul>
+          <li>Um projeto de integração para cada portal</li>
+          <li>Scripts que quebram a cada mudança de layout</li>
+          <li>Pessoas repetindo a mesma tarefa centenas de vezes por dia</li>
+          <li>Pouca evidência do que foi feito em cada portal</li>
+        </ul></div>
+        <div><h3>Com o Automata</h3><ul>
+          <li>Fluxos criados pela operação, a partir de uma demonstração</li>
+          <li>Custo de modelo só quando a interface muda</li>
+          <li>A mesma tarefa em lote, com falhas isoladas por item</li>
+          <li>Captura de tela e resultado extraído em cada passo</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s5">
+    <div class="label-col"><p class="label" id="s5"><b>05</b> Problemas em aberto</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que ainda não está resolvido</h2>
+      <ol class="problems reveal">
+        <li><h3>Compilar demonstrações</h3><p>Transformar uma sessão humana ruidosa, com hesitações e desvios, em um programa robusto e parametrizado.</p></li>
+        <li><h3>Saber que algo deu errado</h3><p>Uma tela congelada, um clique engolido, um sucesso que na verdade falhou: detectar isso sem ninguém olhando.</p></li>
+        <li><h3>Transferir entre portais</h3><p>Aprender uma tarefa num portal e aplicá-la em outro que faz a mesma coisa de outro jeito.</p></li>
+        <li><h3>Agentes com credenciais</h3><p>Agir em sistemas reais sem nunca expor segredos, com cada ação rastreável e nenhum envio duplicado.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="cta reveal">
+      <h2>Quer construir o Automata com a gente?</h2>
+      <p>Buscamos engenheiras, engenheiros e pesquisadores de todas as senioridades, e estudantes que queiram trabalhar em problemas reais da saúde.</p>
+      <a class="btn" href="../#carreiras">Ver carreiras <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="next" href="../">Todos os projetos</a>
+  </section>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../#termos">Termos de Uso</a> e à <a href="../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../#blog">Blog</a></li>
+      <li><a href="../#carreiras">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="../assets/projects.js"></script>
+<script src="../assets/product.js"></script>
+<script src="../assets/fields.js"></script>
+</body>
+</html>
