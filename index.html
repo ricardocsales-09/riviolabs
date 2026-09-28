@@ -86,7 +86,7 @@
   }
   .detail .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 3px rgba(5,117,230,0.25); }
   .detail h1 {
-    margin: 0; font-weight: 400; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.04; letter-spacing: -0.025em;
+    margin: 0; font-weight: 400; font-size: clamp(27px, 3.8vw, 47px); line-height: 1.04; letter-spacing: -0.025em;
     text-wrap: balance;
   }
   .detail p { margin: 0; color: var(--ink-2); font-size: 16px; max-width: 32rem; text-wrap: pretty; }
@@ -142,7 +142,7 @@
         .bottom { grid-template-columns: 1fr; }
     .foot-links { justify-content: flex-start; }
     .detail { min-height: 9.5em; }
-    .detail h1 { font-size: 26px; }
+    .detail h1 { font-size: 23px; }
     .detail p { font-size: 14px; }
     .top nav .hide-sm { display: none; }
   }
@@ -168,7 +168,7 @@
       <div class="detail" id="detail" aria-live="polite">
         <span class="eyebrow" id="dEyebrow">Rivio Labs · IA para a saúde</span>
         <h1 id="dTitle">A inteligência que orquestra a saúde</h1>
-        <p id="dText">O Rivio Labs é onde a Rivio constrói agentes e sistemas de IA que entendem, decidem e operam a gestão hospitalar: do prontuário ao pagamento, do hospital à operadora.</p>
+        <p id="dText" hidden>O Rivio Labs é onde a Rivio constrói agentes e sistemas de IA que entendem, decidem e operam a gestão hospitalar: do prontuário ao pagamento, do hospital à operadora.</p>
       </div>
       <nav class="projects" aria-label="Projetos">
         <ul id="projects"></ul>
@@ -200,8 +200,8 @@
       text: "Agentes especialistas auditam cada conta médica contra dados, contratos e conhecimento clínico, e cada ajuste chega com evidência e impacto financeiro.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.26, gate: 0.52 } },
     { id: "automata", name: "Automata", title: "Agentes que operam qualquer interface web",
       text: "Uma única demonstração humana vira automação determinística e agêntica, que se adapta sozinha quando a interface muda.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.2, gate: 0.66 } },
-    { id: "denial-intelligence", name: "Denial Intelligence", title: "Inteligência agêntica sobre negativas de pagamento",
-      text: "Um sistema agêntico treinado em padrões de glosa em escala, com o contexto completo da jornada do paciente e o comportamento de cada operadora. Previne a negativa antes do envio e, quando ela acontece, decide e contesta com evidência.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
+    { id: "denial-intelligence", name: "Denial Intelligence", title: "Inteligência agêntica sobre glosas",
+      text: "Um sistema agêntico treinado em padrões de glosa em escala, com o contexto completo da jornada do paciente e o comportamento de cada operadora. Previne a glosa antes do envio e, quando ela acontece, decide e contesta com evidência.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
     { id: "atlas", name: "Atlas", title: "A camada que lê o hospital",
       text: "Lê e interpreta toda a documentação do hospital, digital ou em papel: prontuários, laudos, guias e autorizações viram contexto estruturado para pessoas e agentes.", mode: { flow: 0.8, swirl: 1.5, glosa: 0.18, gate: 0.58 } },
     { id: "payer-model", name: "Payer Model", title: "Como cada pagador paga, e por quê",
@@ -248,6 +248,7 @@
     $("dEyebrow").hidden = !src.tag;
     $("dTitle").textContent = src.title;
     $("dText").textContent = src.text;
+    $("dText").hidden = !p;
     detail.classList.remove("swap"); void detail.offsetWidth; detail.classList.add("swap");
     target = { ...src.mode };
     list.querySelectorAll("a").forEach((a) => a.classList.toggle("active", !!p && a.dataset.id === p.id));
