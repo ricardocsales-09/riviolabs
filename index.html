@@ -153,6 +153,8 @@
     .bottom { grid-template-columns: 1fr; }
     .foot-links { justify-content: flex-start; }
     .detail { min-height: 9.5em; }
+    .detail h1 { font-size: 26px; }
+    .detail p { font-size: 14px; }
     .top nav .hide-sm { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -220,20 +222,18 @@
 <script>
 (() => {
   const PROJECTS = [
-    { id: "cortex", name: "Cortex", tag: "Em produção · auditoria", title: "Auditoria médica que lê o prontuário inteiro.",
-      text: "Modelos que cruzam prontuário, conta e contrato para apontar o que a operadora vai glosar antes do envio.", mode: { flow: 1.0, swirl: 0.8, glosa: 0.22, gate: 0.56 } },
-    { id: "glosa-bench", name: "Glosa Bench", tag: "Benchmark público", title: "Um benchmark aberto para previsão de glosas.",
-      text: "Casos anonimizados de contas hospitalares com o desfecho real, para medir modelos em um problema que importa.", mode: { flow: 0.8, swirl: 0.5, glosa: 0.35, gate: 0.62 } },
-    { id: "recurso", name: "Agente de Recurso", tag: "Pesquisa · agentes", title: "Recursos de glosa escritos com evidência.",
-      text: "Um agente que monta o recurso a partir do prontuário e cita cada trecho usado, pronto para revisão do auditor.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.28, gate: 0.5 } },
-    { id: "tuss", name: "TUSS Mapper", tag: "Pesquisa · pós-treino", title: "Do texto livre ao código TUSS.",
-      text: "Pós-treino com RL para mapear descrições de procedimentos para a tabela TUSS com a justificativa ao lado.", mode: { flow: 0.9, swirl: 1.5, glosa: 0.18, gate: 0.6 } },
-    { id: "fde", name: "FDE Playground", tag: "Ferramenta interna", title: "O fluxo hospital → operadora, simulado.",
-      text: "Um ambiente para testar regras de faturamento e ver onde cada conta trava no caminho até o pagamento.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.25, gate: 0.66 } },
-    { id: "tiss-eval", name: "TISS Eval", tag: "Avaliação de modelos", title: "LLMs diante de guias TISS reais.",
-      text: "Um conjunto de avaliação para leitura e validação de guias TISS, com erros que aparecem no dia a dia do faturamento.", mode: { flow: 0.7, swirl: 0.9, glosa: 0.3, gate: 0.58 } },
-    { id: "command", name: "Command Center", tag: "Em produção · operação", title: "A operação de receita em uma tela.",
-      text: "Onde as recomendações dos modelos viram fila de trabalho para auditores, faturistas e gestores do hospital.", mode: { flow: 1.1, swirl: 0.7, glosa: 0.2, gate: 0.54 } },
+    { id: "mamba", name: "MAMBA", title: "Auditoria médica orquestrada por múltiplos agentes.",
+      text: "Multi-Agent Medical Billing Audit: um time de agentes investiga cada conta médica consultando dados, contratos e uma base de conhecimento proprietária. Eles propõem ajustes com justificativa, evidência e impacto financeiro, e explicitam o que não sabem. Cada erro diagnosticado vira aprendizado do sistema, rumo a auditar 100% das contas antes do faturamento.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.26, gate: 0.52 } },
+    { id: "automata", name: "Automata", title: "A camada entre agentes e a web.",
+      text: "Uma plataforma para agentes operarem qualquer interface web como uma pessoa operaria. A partir de uma única demonstração humana, gera um executor determinístico e um executor agêntico que se adapta quando a interface muda. A privacidade vem desde o desenho: dado sensível nunca é gravado.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.2, gate: 0.66 } },
+    { id: "dis", name: "DIS", title: "Entender cada negativa de pagamento, e evitar a próxima.",
+      text: "Denial Intelligence System: aprende padrões de glosa e reconstrói o contexto de cada uma, do que foi enviado ao que diz o registro clínico e qual regra se aplica. Decide o que vale contestar e propõe a resposta com evidência. Cada decisão especialista volta para montante, onde ajuda a prevenir o erro.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
+    { id: "atlas", name: "Atlas", title: "Leitura especializada de documentos clínicos.",
+      text: "Toda a leitura e extração de informação de documentos clínicos passa pelo Atlas: prontuários, guias, laudos, autorizações e notas, em qualquer formato e ordem. Ele separa, classifica e extrai cada documento. As configurações de extração se otimizam sozinhas, testando alternativas e aplicando só a que vence na medição.", mode: { flow: 0.8, swirl: 1.5, glosa: 0.18, gate: 0.58 } },
+    { id: "payer-model", name: "Payer Model", title: "Como cada pagador paga, e por quê.",
+      text: "Contratos, tabelas de preço e o histórico de comportamento de cada operadora reunidos em uma camada de conhecimento que humanos e agentes consultam. Responde o que foi acordado e também como o pagador costuma aplicar esse acordo na prática, sempre com a fonte de cada resposta.", mode: { flow: 0.7, swirl: 0.5, glosa: 0.3, gate: 0.62 } },
+    { id: "hospital-twin", name: "Hospital Twin", title: "Cada hospital fala um dialeto. Os agentes precisam de uma língua só.",
+      text: "Cada hospital codifica contas, itens e prontuários do seu jeito. O Hospital Twin dá a esses dados um significado comum e organiza os princípios e fontes que os agentes usam para decidir. Sua camada de itens liga mais de 1,5 milhão de procedimentos, materiais e medicamentos à codificação de cada instituição, com a regra e a evidência de cada correspondência.", mode: { flow: 1.0, swirl: 0.7, glosa: 0.22, gate: 0.54 } },
   ];
   const POSTS = [
     { t: "Glosa Bench: um benchmark aberto para previsão de glosas", d: "18 set 2026", tag: "Benchmark" },
@@ -270,7 +270,8 @@
   let pinned = null;
   function show(p) {
     const src = p || DEFAULT;
-    $("dEyebrow").textContent = src.tag;
+    $("dEyebrow").textContent = src.tag || "";
+    $("dEyebrow").hidden = !src.tag;
     $("dTitle").textContent = src.title;
     $("dText").textContent = src.text;
     detail.classList.remove("swap"); void detail.offsetWidth; detail.classList.add("swap");
@@ -414,7 +415,7 @@
     if (lx > 12 && lx < W - 150) {
       ctx.font = '500 11px "Funnel Display", Inter, system-ui, sans-serif';
       ctx.fillStyle = "rgba(126,184,255,0.8)";
-      ctx.fillText("AUDITORIA · CORTEX", lx + 6, ly);
+      ctx.fillText("AUDITORIA · MAMBA", lx + 6, ly);
       ctx.fillRect(lx, ly - 8, 1, 14);
     }
   }
