@@ -2,6 +2,8 @@
 
 Site do Rivio Labs, a casa da pesquisa em IA da Rivio.
 
+Publicado em https://ricardocsales-09.github.io/riviolabs/ (GitHub Pages, a partir da branch `main`).
+
 Página estática em um único arquivo (`index.html`), sem build e sem dependências além da fonte Funnel Display (Google Fonts).
 
 ## Rodar localmente
