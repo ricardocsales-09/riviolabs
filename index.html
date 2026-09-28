@@ -78,8 +78,8 @@
 
   /* Bottom */
   .bottom { align-self: end; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px 48px; }
-  .intro { max-width: 34rem; display: grid; gap: 22px; }
-  .detail { min-height: 7.2em; display: grid; align-content: end; gap: 8px; }
+  .intro { display: grid; gap: 22px; }
+  .detail { max-width: 34rem; min-height: 7.2em; display: grid; align-content: end; gap: 8px; }
   .detail .eyebrow {
     font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sky);
     display: flex; align-items: center; gap: 10px;
@@ -93,7 +93,7 @@
   .detail.swap > * { animation: rise 240ms var(--ease); }
   @keyframes rise { from { opacity: .35; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
-  .projects { display: flex; flex-wrap: wrap; row-gap: 6px; color: var(--ink-2); }
+  .projects { display: flex; flex-wrap: nowrap; white-space: nowrap; row-gap: 6px; color: var(--ink-2); }
   .projects a { display: inline-flex; align-items: center; }
   .projects a.active { color: var(--ink); }
   .projects li { list-style: none; display: inline-flex; align-items: center; }
@@ -142,6 +142,7 @@
         .bottom { grid-template-columns: 1fr; }
     .foot-links { justify-content: flex-start; }
     .detail { min-height: 9.5em; }
+    .projects { flex-wrap: wrap; white-space: normal; }
     .detail h1 { font-size: 23px; }
     .detail p { font-size: 14px; }
     .top nav .hide-sm { display: none; }
@@ -167,7 +168,7 @@
     <div class="intro">
       <div class="detail" id="detail" aria-live="polite">
         <span class="eyebrow" id="dEyebrow">Rivio Labs · IA para a saúde</span>
-        <h1 id="dTitle">A inteligência que orquestra a saúde</h1>
+        <h1 id="dTitle">Construindo a inteligência que orquestra a saúde</h1>
         <p id="dText" hidden>O Rivio Labs é onde a Rivio constrói agentes e sistemas de IA que entendem, decidem e operam a gestão hospitalar: do prontuário ao pagamento, do hospital à operadora.</p>
       </div>
       <nav class="projects" aria-label="Projetos">
@@ -222,7 +223,7 @@
   ];
   const DEFAULT = {
     tag: "Rivio Labs · IA para a saúde",
-    title: "A inteligência que orquestra a saúde",
+    title: "Construindo a inteligência que orquestra a saúde",
     text: "O Rivio Labs é onde a Rivio constrói agentes e sistemas de IA que entendem, decidem e operam a gestão hospitalar: do prontuário ao pagamento, do hospital à operadora.",
     mode: { flow: 1.0, swirl: 0.8, glosa: 0.24, gate: 0.58 },
   };
