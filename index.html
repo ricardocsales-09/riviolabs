@@ -191,9 +191,9 @@
   <footer class="bottom">
     <div class="intro">
       <div class="detail" id="detail" aria-live="polite">
-        <span class="eyebrow" id="dEyebrow">Pesquisa aplicada · RCM</span>
-        <h1 id="dTitle">IA para a receita que o hospital já ganhou.</h1>
-        <p id="dText">O Rivio Labs é onde a Rivio pesquisa modelos, agentes e benchmarks para auditoria médica, faturamento e recurso de glosas.</p>
+        <span class="eyebrow" id="dEyebrow">Rivio Labs · IA para a saúde</span>
+        <h1 id="dTitle">A inteligência que orquestra a saúde.</h1>
+        <p id="dText">O Rivio Labs é onde a Rivio constrói agentes e sistemas de IA que entendem, decidem e operam a gestão hospitalar: do prontuário ao pagamento, do hospital à operadora.</p>
       </div>
       <nav class="projects" aria-label="Projetos">
         <ul id="projects"></ul>
@@ -222,18 +222,18 @@
 <script>
 (() => {
   const PROJECTS = [
-    { id: "mamba", name: "MAMBA", title: "Auditoria médica orquestrada por múltiplos agentes.",
-      text: "Multi-Agent Medical Billing Audit: um time de agentes investiga cada conta médica consultando dados, contratos e uma base de conhecimento proprietária. Eles propõem ajustes com justificativa, evidência e impacto financeiro, e explicitam o que não sabem. Cada erro diagnosticado vira aprendizado do sistema, rumo a auditar 100% das contas antes do faturamento.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.26, gate: 0.52 } },
-    { id: "automata", name: "Automata", title: "A camada entre agentes e a web.",
-      text: "Uma plataforma para agentes operarem qualquer interface web como uma pessoa operaria. A partir de uma única demonstração humana, gera um executor determinístico e um executor agêntico que se adapta quando a interface muda. A privacidade vem desde o desenho: dado sensível nunca é gravado.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.2, gate: 0.66 } },
-    { id: "dis", name: "DIS", title: "Entender cada negativa de pagamento, e evitar a próxima.",
-      text: "Denial Intelligence System: aprende padrões de glosa e reconstrói o contexto de cada uma, do que foi enviado ao que diz o registro clínico e qual regra se aplica. Decide o que vale contestar e propõe a resposta com evidência. Cada decisão especialista volta para montante, onde ajuda a prevenir o erro.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
-    { id: "atlas", name: "Atlas", title: "Leitura especializada de documentos clínicos.",
-      text: "Toda a leitura e extração de informação de documentos clínicos passa pelo Atlas: prontuários, guias, laudos, autorizações e notas, em qualquer formato e ordem. Ele separa, classifica e extrai cada documento. As configurações de extração se otimizam sozinhas, testando alternativas e aplicando só a que vence na medição.", mode: { flow: 0.8, swirl: 1.5, glosa: 0.18, gate: 0.58 } },
+    { id: "mamba", name: "MAMBA", title: "Auditoria médica feita por um time de agentes.",
+      text: "Multi-Agent Medical Billing Audit. Agentes especialistas auditam cada conta contra dados, contratos e conhecimento clínico, e cada ajuste chega com evidência e impacto financeiro.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.26, gate: 0.52 } },
+    { id: "automata", name: "Automata", title: "Agentes que operam qualquer interface web.",
+      text: "Uma única demonstração humana vira automação determinística e agêntica, que se adapta sozinha quando a interface muda.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.2, gate: 0.66 } },
+    { id: "dis", name: "DIS", title: "Cada glosa vira aprendizado.",
+      text: "Denial Intelligence System. Reconstrói o contexto de cada negativa de pagamento, decide o que vale contestar e devolve o aprendizado para quem previne.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
+    { id: "atlas", name: "Atlas", title: "Documentos clínicos lidos como um especialista lê.",
+      text: "Prontuários, laudos, guias e autorizações, em qualquer formato, viram dados estruturados. Cada extração se otimiza sozinha, medida versão a versão.", mode: { flow: 0.8, swirl: 1.5, glosa: 0.18, gate: 0.58 } },
     { id: "payer-model", name: "Payer Model", title: "Como cada pagador paga, e por quê.",
-      text: "Contratos, tabelas de preço e o histórico de comportamento de cada operadora reunidos em uma camada de conhecimento que humanos e agentes consultam. Responde o que foi acordado e também como o pagador costuma aplicar esse acordo na prática, sempre com a fonte de cada resposta.", mode: { flow: 0.7, swirl: 0.5, glosa: 0.3, gate: 0.62 } },
-    { id: "hospital-twin", name: "Hospital Twin", title: "Cada hospital fala um dialeto. Os agentes precisam de uma língua só.",
-      text: "Cada hospital codifica contas, itens e prontuários do seu jeito. O Hospital Twin dá a esses dados um significado comum e organiza os princípios e fontes que os agentes usam para decidir. Sua camada de itens liga mais de 1,5 milhão de procedimentos, materiais e medicamentos à codificação de cada instituição, com a regra e a evidência de cada correspondência.", mode: { flow: 1.0, swirl: 0.7, glosa: 0.22, gate: 0.54 } },
+      text: "Contratos, tabelas de preço e o histórico de comportamento de cada operadora em um modelo que humanos e agentes consultam, sempre com a fonte.", mode: { flow: 0.7, swirl: 0.5, glosa: 0.3, gate: 0.62 } },
+    { id: "hospital-twin", name: "Hospital Twin", title: "Um gêmeo digital de cada hospital.",
+      text: "Traduz a codificação própria de cada instituição para uma língua comum, para que agentes raciocinem sobre qualquer hospital sem integração sob medida.", mode: { flow: 1.0, swirl: 0.7, glosa: 0.22, gate: 0.54 } },
   ];
   const POSTS = [
     { t: "Glosa Bench: um benchmark aberto para previsão de glosas", d: "18 set 2026", tag: "Benchmark" },
@@ -247,9 +247,9 @@
     { t: "Quando o auditor discorda do modelo", d: "3 abr 2026", tag: "Interpretabilidade" },
   ];
   const DEFAULT = {
-    tag: "Pesquisa aplicada · RCM",
-    title: "IA para a receita que o hospital já ganhou.",
-    text: "O Rivio Labs é onde a Rivio pesquisa modelos, agentes e benchmarks para auditoria médica, faturamento e recurso de glosas.",
+    tag: "Rivio Labs · IA para a saúde",
+    title: "A inteligência que orquestra a saúde.",
+    text: "O Rivio Labs é onde a Rivio constrói agentes e sistemas de IA que entendem, decidem e operam a gestão hospitalar: do prontuário ao pagamento, do hospital à operadora.",
     mode: { flow: 1.0, swirl: 0.8, glosa: 0.24, gate: 0.58 },
   };
 
