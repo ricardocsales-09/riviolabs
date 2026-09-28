@@ -5,7 +5,7 @@ window.RIVIO_PROJECTS = [
   { id: "automata", name: "Automata", title: "Agentes que operam qualquer interface web",
     text: "Uma demonstração humana vira automação de portal: um replay determinístico e um agente que segue quando a tela muda. Cada tarefa roda em lote, com evidência de cada passo.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.2, gate: 0.66 } },
   { id: "denial-intelligence", name: "Denial Intelligence", title: "Inteligência agêntica sobre glosas",
-    text: "Um sistema agêntico que conhece os padrões de glosa, a jornada do paciente e o comportamento de cada operadora. Previne a glosa antes do envio e, quando ela vem, decide e monta o recurso com evidência.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
+    text: "Analisa cada glosa com o contexto completo da jornada do paciente e acompanha o comportamento de cada operadora, que muda a cada ciclo. Previne a glosa antes do envio e, quando ela vem, decide e monta o recurso com evidência.", mode: { flow: 0.9, swirl: 0.9, glosa: 0.36, gate: 0.6 } },
   { id: "atlas", name: "Atlas", title: "A camada que lê o hospital",
     text: "Lê e classifica toda a documentação do hospital, digital ou em papel. Prontuários, laudos, guias e autorizações viram fatos com fonte, prontos para a auditoria.", mode: { flow: 0.8, swirl: 1.5, glosa: 0.18, gate: 0.58 } },
   { id: "payer-model", name: "Payer Model", title: "O comportamento de cada operadora, conta a conta",
