@@ -27,4 +27,4 @@ Cada página de projeto define sua cor de destaque no `style` do `<body>` (`--ac
 
 ## Conteúdo
 
-Os cenários da seção "Na prática" de cada projeto são ilustrativos: números, códigos e valores são fictícios. Os posts do blog ainda são exemplos; para editar, altere a lista `POSTS` no script no fim do `index.html`.
+A seção "Problemas em aberto" de cada página de projeto está no HTML, mas oculta com o atributo `hidden`; para exibi-la, remova o atributo da `<section>`. Os cenários da seção "Na prática" de cada projeto são ilustrativos: números, códigos e valores são fictícios. Os posts do blog ainda são exemplos; para editar, altere a lista `POSTS` no script no fim do `index.html`.
