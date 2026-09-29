@@ -174,7 +174,8 @@
     a.href = p.id + "/"; a.textContent = p.name; a.dataset.id = p.id;
     li.appendChild(a); list.appendChild(li);
   });
-  $("posts").innerHTML = POSTS.map((p) =>
+  // Posts sem href ainda não foram escritos e ficam ocultos até ganharem uma página.
+  $("posts").innerHTML = POSTS.filter((p) => p.href).map((p) =>
     `<li><a href="${p.href || "#post"}"><span class="post-title">${p.t}</span><span class="post-meta"><span>${p.d}</span><span>·</span><span class="tag">${p.tag}</span></span></a></li>`
   ).join("");
 
