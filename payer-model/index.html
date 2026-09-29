@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Payer Model · Rivio Labs</title>
+<meta name="description" content="O Payer Model tece contratos, tabelas de preço e o histórico de cada demonstrativo em uma malha de comportamento por operadora: o que ela aceita, o que glosa, o que exige e o que reverte em recurso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/product.css">
+</head>
+<body class="product" data-project="payer-model" style="--accent: #5B8CFF; --accent-rgb: 91, 140, 255;">
+<header class="p-top">
+  <a class="brand" href="../" aria-label="Rivio Labs">
+    <img src="../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Projetos">
+    <ul class="p-index"></ul>
+    <a class="p-back" href="../">← Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <canvas data-visual="strata" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow">Payer Model</p>
+      <h1>O contrato diz uma coisa. A operadora faz outra</h1>
+      <p class="lede">O Payer Model tece contratos, tabelas de preço e o histórico de cada demonstrativo em uma malha de comportamento por operadora: o que ela aceita, o que glosa, o que exige e o que reverte em recurso.</p>
+      <span class="cue">Role para explorar</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s1">
+    <div class="label-col"><p class="label" id="s1"><b>01</b> A tese</p></div>
+    <div class="body-col"><p class="statement reveal">No papel, a regra é o contrato. Na prática, cada operadora tem um jeito próprio de aplicá-lo: o que aceita, o que glosa, que documento exige, o que reverte em recurso. Esse conhecimento vive na memória de quem está há anos na operação. <span>O Payer Model converte cada demonstrativo, glosa e recurso em dado, e cada contrato em regra consultável, para que pessoas e agentes saibam o que esperar de cada pagador.</span></p></div>
+  </section>
+
+  <section class="section" aria-labelledby="s2">
+    <div class="label-col"><p class="label" id="s2"><b>02</b> O que muda</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que foi acordado, e o que acontece</h2>
+      <ol class="pillars reveal">
+        <li><span class="n">01</span><h3>Contrato computável</h3><p>Cláusulas, aditivos, tabelas próprias e listas da operadora organizados como política consultável, com vigência e fonte.</p></li>
+        <li><span class="n">02</span><h3>Hierarquia de preços</h3><p>A tabela da operadora vem antes das referências de mercado, como CBHPM e Brasíndice, respeitando plano e vigência.</p></li>
+        <li><span class="n">03</span><h3>Memória de comportamento</h3><p>Cada retorno acumulado: motivos de glosa normalizados, causas, prazos e o que reverte em recurso.</p></li>
+        <li><span class="n">04</span><h3>Aprendizado que se transfere</h3><p>Um novo hospital com a mesma operadora já começa sabendo o que ela costuma glosar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s3">
+    <div class="label-col"><p class="label" id="s3"><b>03</b> Na prática</p><p class="caption">Cenário ilustrativo</p></div>
+    <div class="body-col">
+      <h2 class="reveal">A memória de um pagador, motivo a motivo</h2>
+      <div class="module m-matrix">
+        <div class="module-head"><span><strong>Operadora A</strong> · glosas por motivo, últimos 12 meses</span><span class="caption">Dados ilustrativos</span></div>
+        <div class="stage">
+          <div class="grid">
+            <table>
+              <caption class="caption" style="caption-side: bottom; text-align: left; padding-top: 14px;">Tamanho do ponto: participação do motivo nas glosas do mês · Círculo vazio: previsão</caption>
+              <thead><tr><th scope="col"><span hidden>Motivo</span></th><th scope="col">out</th><th scope="col">nov</th><th scope="col">dez</th><th scope="col">jan</th><th scope="col">fev</th><th scope="col">mar</th><th scope="col">abr</th><th scope="col">mai</th><th scope="col">jun</th><th scope="col">jul</th><th scope="col">ago</th><th scope="col">set</th><th scope="col" class="fc">prev.</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="side">
+            <div class="insight"><p>Glosas de tabela e preço sobem no mês seguinte a cada reajuste.</p><small>Padrão recorrente · antecipado pelo modelo</small></div>
+            <div class="insight"><p>Documentação cresce mês a mês: a operadora passou a exigir laudo em mais exames.</p><small>Mudança de comportamento detectada</small></div>
+            <div class="insight"><p>O contrato diz uma coisa; a prática, outra. O modelo mostra as duas lado a lado.</p><small>Regra × prática</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s4">
+    <div class="label-col"><p class="label" id="s4"><b>04</b> Antes e depois</p></div>
+    <div class="body-col">
+      <div class="compare reveal">
+        <div><h3>Hoje</h3><ul>
+          <li>O faturista descobre que a operadora mudou de regra quando a glosa já chegou</li>
+          <li>Contrato em PDF, aditivo por e-mail e tabela em planilha, cada um com uma versão diferente do preço</li>
+          <li>O que cada operadora aceita na prática mora na cabeça de quem está há anos na operação, e vai embora com essa pessoa</li>
+        </ul></div>
+        <div><h3>Com o Payer Model</h3><ul>
+          <li>Política computável por hospital e operadora: cláusulas, aditivos e tabelas com vigência, hierarquia de preço e fonte</li>
+          <li>Cada demonstrativo normalizado em motivo, causa e desfecho, com detecção de mudança de comportamento a cada ciclo</li>
+          <li>Uma fonte consultada por pessoas e agentes: auditoria, faturamento e glosa leem o mesmo modelo da operadora</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problemas em aberto: oculto por enquanto. Remova o atributo hidden para voltar a exibir. -->
+  <section class="section" aria-labelledby="s5" hidden>
+    <div class="label-col"><p class="label" id="s5"><b>05</b> Problemas em aberto</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que ainda não está resolvido</h2>
+      <ol class="problems reveal">
+        <li><h3>Contratos que se contradizem</h3><p>Aditivos que contrariam cláusulas, regras que mudam no tempo e contratos diferentes entre unidades do mesmo hospital.</p></li>
+        <li><h3>Regras que ninguém escreveu</h3><p>Aprender o comportamento real a partir de desfechos atrasados, incompletos e enviesados pelo que foi recorrido.</p></li>
+        <li><h3>Detectar mudança cedo</h3><p>Um código de glosa novo, um estorno, uma exigência sem aviso: perceber a mudança antes que ela vire perda.</p></li>
+        <li><h3>Prever com explicação</h3><p>Toda estimativa de risco precisa vir com o porquê, na linguagem de quem fatura.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="cta reveal">
+      <h2>Construa o Payer Model com a gente</h2>
+      <p>Aqui a pesquisa acontece dentro de uma operação real: cada conta auditada, cada glosa revertida e cada demonstrativo que volta da operadora vira rótulo.</p>
+      <a class="btn" href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Ver oportunidades <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="next" href="../">Todos os projetos</a>
+  </section>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../#termos">Termos de Uso</a> e à <a href="../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../#blog">Blog</a></li>
+      <li><a href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="../assets/projects.js"></script>
+<script src="../assets/product.js"></script>
+<script src="../assets/fields.js"></script>
+</body>
+</html>

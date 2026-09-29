@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Denial Intelligence · Rivio Labs</title>
+<meta name="description" content="Um sistema agêntico que analisa cada glosa com o contexto completo da jornada do paciente e acompanha o comportamento de cada operadora, que muda a cada ciclo. Previne antes do envio e, quando a glosa vem, decide e contesta com evidência.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/product.css">
+</head>
+<body class="product" data-project="denial-intelligence" style="--accent: #F0A350; --accent-rgb: 240, 163, 80;">
+<header class="p-top">
+  <a class="brand" href="../" aria-label="Rivio Labs">
+    <img src="../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Projetos">
+    <ul class="p-index"></ul>
+    <a class="p-back" href="../">← Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <canvas data-visual="stream" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow">Denial Intelligence</p>
+      <h1>A melhor glosa é a que nunca acontece</h1>
+      <p class="lede">Um sistema agêntico que analisa cada glosa com o contexto completo da jornada do paciente e acompanha o comportamento de cada operadora, que muda a cada ciclo. Previne antes do envio e, quando a glosa vem, decide e contesta com evidência.</p>
+      <span class="cue">Role para explorar</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s1">
+    <div class="label-col"><p class="label" id="s1"><b>01</b> A tese</p></div>
+    <div class="body-col"><p class="statement reveal">Glosa é o ponto do ciclo de receita com menos inteligência. Para decidir se uma glosa é devida, alguém precisa juntar o XML enviado, os anexos, o prontuário, o contrato e o histórico da operadora, uma fonte por vez, contra prazos curtos. <span>O Denial Intelligence analisa cada glosa com o contexto completo da jornada do paciente. E o modelo de cada operadora evolui a cada demonstrativo que volta: o que ela passou a glosar, o que reverte em recurso, o que mudou desde o último ciclo.</span></p></div>
+  </section>
+
+  <section class="section" aria-labelledby="s2">
+    <div class="label-col"><p class="label" id="s2"><b>02</b> O que muda</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Do motivo da glosa à causa</h2>
+      <ol class="pillars reveal">
+        <li><span class="n">01</span><h3>Contexto completo</h3><p>A partir de uma glosa, o agente reúne sozinho o que foi enviado, os anexos, o prontuário, o contrato, as tabelas e o histórico da operadora.</p></li>
+        <li><span class="n">02</span><h3>Um playbook por padrão</h3><p>Cada tipo de glosa tem hipóteses, fontes em ordem de consulta e critério de decisão: procedente, contestável ou dependente de evidência.</p></li>
+        <li><span class="n">03</span><h3>Prevenção a montante</h3><p>Cada padrão aprendido volta como regra para a auditoria e o faturamento, antes do próximo envio.</p></li>
+        <li><span class="n">04</span><h3>Decisão com alçada</h3><p>Aceitar, recorrer ou escalar: o agente propõe com justificativa, e um especialista aprova antes de qualquer envio.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s3">
+    <div class="label-col"><p class="label" id="s3"><b>03</b> Na prática</p><p class="caption">Cenário ilustrativo</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Uma guia, antes do envio e depois do retorno</h2>
+      <div class="module m-denial">
+        <div class="module-head"><span><strong>Guia 77301</strong> · Internação clínica · 9 dias</span><span class="caption">Do pré-envio ao recurso</span></div>
+        <div class="cols">
+          <div class="col">
+            <h4>Antes do envio</h4>
+            <div class="sig"><p>Senha de autorização vencida na data do procedimento.</p><span class="chip warn">Risco alto</span><small>Padrão recorrente nesta operadora · renovar a senha antes de enviar</small></div>
+            <div class="sig"><p>Laudo exigido para o exame não está entre os anexos.</p><span class="chip warn">Risco médio</span><small>Exigência do contrato vigente · anexar o laudo</small></div>
+            <div class="sig"><p>Diárias coerentes com as evoluções do prontuário.</p><span class="chip ok">Sem risco</span><small>Conferido contra a jornada completa do paciente</small></div>
+          </div>
+          <div class="col">
+            <h4>Depois do retorno</h4>
+            <div class="sig"><p>Material especial glosado. Motivo informado: cobrança não prevista.</p><span class="chip">R$ 2.960,00</span><small>Retorno da operadora no demonstrativo</small></div>
+            <div class="verdict">
+              <p><strong>Contestável.</strong> O material está previsto no contrato e o uso está registrado na descrição cirúrgica.</p>
+              <ul><li>Cláusula de materiais especiais do contrato vigente</li><li>Registro de uso e etiqueta do material</li><li>Glosas por esse motivo costumam ser revertidas nesta operadora</li></ul>
+              <div><p class="caption">Chance estimada de reversão</p><div class="meter"><i style="--w: 78%"></i></div></div>
+              <span class="chip accent">Recurso preparado · aguardando o especialista</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s4">
+    <div class="label-col"><p class="label" id="s4"><b>04</b> Antes e depois</p></div>
+    <div class="body-col">
+      <div class="compare reveal">
+        <div><h3>Hoje</h3><ul>
+          <li>A glosa aparece semanas depois, no demonstrativo, com o prazo de recurso já correndo</li>
+          <li>O analista abre cinco sistemas para entender uma única glosa e escreve o recurso a partir de um modelo pronto</li>
+          <li>A operadora muda o que glosa e ninguém percebe até o caixa do mês fechar menor</li>
+        </ul></div>
+        <div><h3>Com o Denial Intelligence</h3><ul>
+          <li>Um pacote de contexto por glosa: XML enviado, anexos, prontuário, contrato vigente e histórico da operadora, montado sem intervenção</li>
+          <li>Playbook por padrão de glosa com decisão explícita: aceitar, recorrer ou escalar, com justificativa e aprovação de um especialista</li>
+          <li>Modelo da operadora atualizado a cada retorno: cada mudança de comportamento vira regra na auditoria antes do próximo envio</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problemas em aberto: oculto por enquanto. Remova o atributo hidden para voltar a exibir. -->
+  <section class="section" aria-labelledby="s5" hidden>
+    <div class="label-col"><p class="label" id="s5"><b>05</b> Problemas em aberto</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que ainda não está resolvido</h2>
+      <ol class="problems reveal">
+        <li><h3>Aprender com respostas que demoram meses</h3><p>O desfecho de um recurso chega muito depois da decisão. Como aprender, e provar rigor, com um sinal escasso e tardio?</p></li>
+        <li><h3>O motivo declarado e o motivo real</h3><p>O código de glosa informado nem sempre é a causa. Separar um do outro exige raciocinar sobre a jornada inteira.</p></li>
+        <li><h3>Guia e item</h3><p>Glosas acontecem por guia e por item, e os valores nem sempre fecham. Reconciliar os dois níveis antes de decidir.</p></li>
+        <li><h3>Métricas que não se deixam enganar</h3><p>Taxa de aprovação sozinha engana. Cobertura, edições humanas e reversões dizem se o agente está mesmo melhorando.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="cta reveal">
+      <h2>Construa o Denial Intelligence com a gente</h2>
+      <p>Aqui a pesquisa acontece dentro de uma operação real: cada conta auditada, cada glosa revertida e cada demonstrativo que volta da operadora vira rótulo.</p>
+      <a class="btn" href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Ver oportunidades <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="next" href="../">Todos os projetos</a>
+  </section>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../#termos">Termos de Uso</a> e à <a href="../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../#blog">Blog</a></li>
+      <li><a href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="../assets/projects.js"></script>
+<script src="../assets/product.js"></script>
+<script src="../assets/fields.js"></script>
+</body>
+</html>

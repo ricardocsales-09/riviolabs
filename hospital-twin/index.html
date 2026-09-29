@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hospital Twin · Rivio Labs</title>
+<meta name="description" content="Um modelo comum de cada instituição, com suas contas, itens, setores e prontuários, para que agentes raciocinem sobre qualquer hospital sem integração sob medida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/product.css">
+</head>
+<body class="product" data-project="hospital-twin" style="--accent: #6FD9C2; --accent-rgb: 111, 217, 194;">
+<header class="p-top">
+  <a class="brand" href="../" aria-label="Rivio Labs">
+    <img src="../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Projetos">
+    <ul class="p-index"></ul>
+    <a class="p-back" href="../">← Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <canvas data-visual="twin" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow">Hospital Twin</p>
+      <h1>Uma ontologia para raciocinar sobre qualquer hospital</h1>
+      <p class="lede">Um modelo comum de cada instituição, com suas contas, itens, setores e prontuários, para que agentes raciocinem sobre qualquer hospital sem integração sob medida.</p>
+      <span class="cue">Role para explorar</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s1">
+    <div class="label-col"><p class="label" id="s1"><b>01</b> A tese</p></div>
+    <div class="body-col"><p class="statement reveal">A mesma dipirona aparece com mais de uma dezena de códigos. Um campo chamado “código TUSS” guarda, na verdade, o código interno do hospital. A mesma cirurgia muda de código conforme a via de acesso que o cirurgião descreve. Para uma pessoa experiente, é contexto. Para um agente, é ruído que impede generalizar. <span>O Hospital Twin é o modelo de mundo da Rivio: uma representação comum de cada instituição, alimentada pelos seus dados reais.</span></p></div>
+  </section>
+
+  <section class="section" aria-labelledby="s2">
+    <div class="label-col"><p class="label" id="s2"><b>02</b> O que muda</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Um modelo, muitos hospitais</h2>
+      <ol class="pillars reveal">
+        <li><span class="n">01</span><h3>Uma língua comum</h3><p>Contas, itens, setores, operadoras e prontuários com o mesmo significado, venham do sistema que vierem.</p></li>
+        <li><span class="n">02</span><h3>Tradução de itens em escala</h3><p>Cerca de 1,5 milhão de itens das tabelas TUSS ligados à codificação de cada hospital, com a regra e a evidência de cada correspondência.</p></li>
+        <li><span class="n">03</span><h3>Conhecimento sobre o modelo</h3><p>Princípios de auditoria com escopo: o global diz o que conferir; o local, o que vale em cada hospital e operadora.</p></li>
+        <li><span class="n">04</span><h3>Procedência em cada campo</h3><p>Identificadores estáveis e a origem de cada dado, para que toda decisão possa ser reconstruída.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s3">
+    <div class="label-col"><p class="label" id="s3"><b>03</b> Na prática</p><p class="caption">Cenário ilustrativo</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Um item, três hospitais, um conceito</h2>
+      <div class="module m-twin">
+        <div class="module-head"><span><strong>Um item, três dialetos</strong></span><span class="caption">Exemplo ilustrativo</span></div>
+        <div class="stage">
+          <div class="src">
+            <div><small>Hospital A · código 004812</small><code>SF 0,9% 500ML FR</code></div>
+            <div><small>Hospital B · código SOR-0500</small><code>SORO FISIOLOGICO 500 ML</code></div>
+            <div><small>Hospital C · código 71.20.335</small><code>CLORETO SODIO 0.9% BOLSA 500</code></div>
+          </div>
+          <svg viewBox="0 0 90 220" preserveAspectRatio="none" aria-hidden="true"><path d="M0 36 C 45 36, 45 110, 90 110"/><path d="M0 110 L 90 110"/><path d="M0 184 C 45 184, 45 110, 90 110"/></svg>
+          <div class="canon">
+            <span class="caption">Conceito comum</span>
+            <strong>Cloreto de sódio 0,9% · solução injetável · 500 mL</strong>
+            <dl><dt>Grupo de receita</dt><dd>Medicamentos</dd><dt>Correspondência</dt><dd>Substância, concentração, volume e apresentação</dd><dt>Evidência</dt><dd>Descrição, unidade e histórico de uso</dd></dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s4">
+    <div class="label-col"><p class="label" id="s4"><b>04</b> Antes e depois</p></div>
+    <div class="body-col">
+      <div class="compare reveal">
+        <div><h3>Hoje</h3><ul>
+          <li>Cada hospital novo vira um projeto de integração: cadastro, códigos e estrutura de conta mapeados à mão</li>
+          <li>A mesma regra de auditoria é reescrita para cada instituição, e cada cópia envelhece de um jeito</li>
+          <li>Um agente que acerta num hospital erra no próximo, porque o mesmo item tem outro código e outro nome</li>
+        </ul></div>
+        <div><h3>Com o Hospital Twin</h3><ul>
+          <li>Ontologia com entidades, relações e procedência por campo: conta, item, setor, operadora e prontuário com identificadores estáveis</li>
+          <li>Catálogo de itens de referência ligado à codificação de cada hospital por entity resolution, com regra e evidência por correspondência</li>
+          <li>Princípios globais parametrizados por instituição: um hospital novo entra mapeando o próprio dialeto</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problemas em aberto: oculto por enquanto. Remova o atributo hidden para voltar a exibir. -->
+  <section class="section" aria-labelledby="s5" hidden>
+    <div class="label-col"><p class="label" id="s5"><b>05</b> Problemas em aberto</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que ainda não está resolvido</h2>
+      <ol class="problems reveal">
+        <li><h3>Entity resolution em escala</h3><p>Casar descrições livres, abreviadas e com erro a um catálogo de milhões de itens, e saber quando não há correspondência.</p></li>
+        <li><h3>O que se transfere</h3><p>Separar o que vale entre hospitais, como a lógica de contrato e preço, do que não vale, como o julgamento clínico local.</p></li>
+        <li><h3>Sim, não ou indeterminado</h3><p>Responder perguntas sobre dados clínicos ruidosos, esparsos e com formatos misturados, sem inventar certeza.</p></li>
+        <li><h3>Um gêmeo sempre fiel</h3><p>Manter o modelo em sincronia com sistemas que não avisam o que mudou, e medir o quanto ele é fiel ao hospital real.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="cta reveal">
+      <h2>Construa o Hospital Twin com a gente</h2>
+      <p>Aqui a pesquisa acontece dentro de uma operação real: cada conta auditada, cada glosa revertida e cada demonstrativo que volta da operadora vira rótulo.</p>
+      <a class="btn" href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Ver oportunidades <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="next" href="../">Todos os projetos</a>
+  </section>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../#termos">Termos de Uso</a> e à <a href="../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../#blog">Blog</a></li>
+      <li><a href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="../assets/projects.js"></script>
+<script src="../assets/product.js"></script>
+<script src="../assets/fields.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAMBA · Rivio Labs</title>
+<meta name="description" content="Um time de agentes especialistas lê a conta, o prontuário e o contrato, propõe cada ajuste com evidência e sabe dizer quando precisa de um humano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/product.css">
+</head>
+<body class="product" data-project="mamba" style="--accent: #7EB8FF; --accent-rgb: 126, 184, 255;">
+<header class="p-top">
+  <a class="brand" href="../" aria-label="Rivio Labs">
+    <img src="../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Projetos">
+    <ul class="p-index"></ul>
+    <a class="p-back" href="../">← Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <canvas data-visual="agents" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow">MAMBA · Multi-Agent Medical Billing Audit</p>
+      <h1>Cada conta auditada como se fosse a única</h1>
+      <p class="lede">Um time de agentes especialistas lê a conta, o prontuário e o contrato, propõe cada ajuste com evidência e sabe dizer quando precisa de um humano.</p>
+      <span class="cue">Role para explorar</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s1">
+    <div class="label-col"><p class="label" id="s1"><b>01</b> A tese</p></div>
+    <div class="body-col"><p class="statement reveal">Hoje, auditar uma conta hospitalar depende de pessoas lendo centenas de itens e páginas de documentação por internação e aplicando julgamento item a item, com regras que mudam por operadora e contratos que se contradizem. A qualidade fica limitada ao tempo que sobra para cada conta. <span>O MAMBA inverte a equação: atenção de especialista em todas as contas, e o julgamento humano concentrado onde ele muda o resultado.</span></p></div>
+  </section>
+
+  <section class="section" aria-labelledby="s2">
+    <div class="label-col"><p class="label" id="s2"><b>02</b> O que muda</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Um especialista para cada grupo de receita</h2>
+      <ol class="pillars reveal">
+        <li><span class="n">01</span><h3>Especialistas por assunto</h3><p>OPME, diárias, honorários, materiais e medicamentos: cada grupo de receita tem um agente que conhece suas regras e suas armadilhas.</p></li>
+        <li><span class="n">02</span><h3>Toda decisão com fonte</h3><p>Cada ajuste cita o trecho do prontuário, a cláusula do contrato e o princípio de auditoria que o sustenta.</p></li>
+        <li><span class="n">03</span><h3>Incerteza explícita</h3><p>Sem evidência suficiente, o resultado vira pendência e diz o que falta. Alto impacto ou baixa confiança vão para revisão humana.</p></li>
+        <li><span class="n">04</span><h3>Aprende com cada divergência</h3><p>Cada discordância com a auditoria humana é diagnosticada até o componente certo: dado, princípio, ferramenta ou agente.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s3">
+    <div class="label-col"><p class="label" id="s3"><b>03</b> Na prática</p><p class="caption">Cenário ilustrativo</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Uma conta, quatro especialistas e um humano no lugar certo</h2>
+      <div class="module m-audit">
+        <div class="module-head"><span><strong>Conta 48213</strong> · Internação cirúrgica · 6 dias · 212 itens</span><span class="caption">Auditoria antes do faturamento</span></div>
+        <div class="rows">
+          <div class="row">
+            <div class="who"><b>OPME</b>Agente especialista</div>
+            <div class="what"><p>Material de compra direta da operadora cobrado na conta do hospital.</p><div class="evid"><span class="chip">Contrato · cláusula de OPME</span><span class="chip">Descrição cirúrgica</span><span class="chip">Nota de débito</span></div></div>
+            <div class="effect"><span class="chip accent">Excluir item</span><b>− R$ 3.480,00</b>Confiança alta</div>
+          </div>
+          <div class="row">
+            <div class="who"><b>Materiais</b>Agente especialista</div>
+            <div class="what"><p>Cateter registrado na folha de sala e ausente da conta.</p><div class="evid"><span class="chip">Folha de sala</span><span class="chip">Catálogo de itens</span></div></div>
+            <div class="effect"><span class="chip accent">Incluir item</span><b>+ R$ 412,60</b>Confiança alta</div>
+          </div>
+          <div class="row">
+            <div class="who"><b>Honorários</b>Agente especialista</div>
+            <div class="what"><p>Honorário de auxiliar sem registro do profissional na descrição cirúrgica.</p><div class="evid"><span class="chip">Descrição cirúrgica</span><span class="chip">Regra do contrato</span></div></div>
+            <div class="effect"><span class="chip warn">Pendência para expert Rivio</span><b>R$ 1.150,00</b>Evidência insuficiente</div>
+          </div>
+          <div class="row">
+            <div class="who"><b>Diárias</b>Agente especialista</div>
+            <div class="what"><p>Diária de UTI no quarto dia sem evolução registrada no prontuário.</p><div class="evid"><span class="chip">Prontuário · evoluções</span><span class="chip">Princípio de diárias</span></div></div>
+            <div class="effect"><span class="chip ok">Revisão humana</span><b>Alto impacto</b>Confiança média</div>
+          </div>
+        </div>
+        <div class="foot"><span>4 achados · 4 especialistas · 1 caso para revisão humana</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s4">
+    <div class="label-col"><p class="label" id="s4"><b>04</b> Antes e depois</p></div>
+    <div class="body-col">
+      <div class="compare reveal">
+        <div><h3>Hoje</h3><ul>
+          <li>Mais contas exigem mais auditores lendo item por item. O que não dá tempo de ver passa e volta como glosa</li>
+          <li>O conhecimento vive na cabeça de poucos auditores seniores. Quando um sai, a qualidade cai e o treino recomeça</li>
+          <li>Regras de cada operadora consultadas em PDFs e e-mails. Um erro de leitura vira retrabalho depois do envio</li>
+          <li>Contas paradas dias na fila da auditoria atrasam o faturamento e o caixa do hospital</li>
+        </ul></div>
+        <div><h3>Com o MAMBA</h3><ul>
+          <li>Toda conta passa por agentes especialistas por grupo de receita antes do faturamento. Só vão para humanos os casos de alto impacto ou baixa confiança</li>
+          <li>Conhecimento de auditoria como princípios versionados, com fonte, escopo e parâmetros por hospital e operadora</li>
+          <li>O contrato vigente é consultado a cada decisão, e cada ajuste cita a cláusula e o trecho do prontuário</li>
+          <li>Pendências e aptidão para faturar saem no momento da auditoria, com a evidência que falta</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problemas em aberto: oculto por enquanto. Remova o atributo hidden para voltar a exibir. -->
+  <section class="section" aria-labelledby="s5" hidden>
+    <div class="label-col"><p class="label" id="s5"><b>05</b> Problemas em aberto</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que ainda não está resolvido</h2>
+      <ol class="problems reveal">
+        <li><h3>Medir acerto sem gabarito</h3><p>A auditoria humana também erra. Como construir uma referência confiável e medir um sistema contra ela, conta a conta?</p></li>
+        <li><h3>Quando dividir e quando juntar</h3><p>Que composição de agentes vence um único modelo com todo o contexto, e a que custo por conta?</p></li>
+        <li><h3>Princípios que generalizam</h3><p>Escrever conhecimento que vale para qualquer hospital e deixar o que é local virar parâmetro. Escrever regras ficou barato; verificá-las, não.</p></li>
+        <li><h3>Confiança calibrada</h3><p>Fazer a confiança que o agente declara corresponder à taxa real de acerto, para que a revisão humana vá para onde precisa.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="cta reveal">
+      <h2>Construa o MAMBA com a gente</h2>
+      <p>Aqui a pesquisa acontece dentro de uma operação real: cada conta auditada, cada glosa revertida e cada demonstrativo que volta da operadora vira rótulo.</p>
+      <a class="btn" href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Ver oportunidades <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="next" href="../">Todos os projetos</a>
+  </section>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../#termos">Termos de Uso</a> e à <a href="../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../#blog">Blog</a></li>
+      <li><a href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="../assets/projects.js"></script>
+<script src="../assets/product.js"></script>
+<script src="../assets/fields.js"></script>
+</body>
+</html>

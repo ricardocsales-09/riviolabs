@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quando o auditor discorda do modelo · Rivio Labs</title>
+<meta name="description" content="Como medimos acerto em auditoria hospitalar quando a referência humana também erra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="../../assets/product.css">
+<style>
+  .post { max-width: 44rem; margin: 0 auto; padding: 132px var(--gutter) 40px; }
+  .post-head { display: grid; gap: 18px; padding-bottom: 36px; border-bottom: 1px solid var(--hair); }
+  .post-head h1 { margin: 0; font-weight: 400; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance; }
+  .post-head .dek { margin: 0; font-size: clamp(18px, 1.5vw, 21px); color: var(--ink-2); line-height: 1.4; text-wrap: pretty; }
+  .byline { display: flex; flex-wrap: wrap; gap: 6px 10px; color: var(--ink-3); font-size: 14px; }
+  .byline span + span::before { content: "·"; margin-right: 10px; }
+  .prose { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.84); padding-top: 36px; }
+  .prose p { margin: 0 0 1.15em; text-wrap: pretty; }
+  .prose h2 { margin: 2.2em 0 0.7em; font-weight: 400; font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.018em; line-height: 1.15; color: var(--ink); }
+  .prose strong { color: var(--ink); font-weight: 500; }
+  .prose blockquote { margin: 1.6em 0; padding: 4px 0 4px 22px; border-left: 2px solid var(--accent); font-size: 21px; line-height: 1.5; color: var(--ink); }
+  .prose .lead { font-size: 20px; color: var(--ink); }
+  .mock { color: var(--ink); background: rgba(240,163,80,0.12); border-bottom: 1px dashed rgba(240,163,80,0.8); padding: 0 3px; border-radius: 3px; cursor: help; }
+  .tbl { margin: 1.6em 0; overflow-x: auto; }
+  .tbl table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px; line-height: 1.45; }
+  .tbl th { text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); padding: 0 14px 10px 0; border-bottom: 1px solid var(--hair-2); }
+  .tbl td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--hair); color: var(--ink-2); vertical-align: top; }
+  .tbl td:first-child { color: var(--ink); white-space: nowrap; }
+  .fig { margin: 2.4em -40px; padding: 26px 26px 18px; border: 1px solid var(--hair); border-radius: 16px;
+    background: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1.2px) 0 0 / 22px 22px, linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)); }
+  .fig-scroll { overflow-x: auto; }
+  .fig svg { display: block; width: 100%; min-width: 600px; height: auto; font-family: var(--font); }
+  .fig figcaption { margin-top: 14px; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+  .fig figcaption b { color: var(--ink-2); font-weight: 500; }
+  .fig .e { stroke: rgba(255,255,255,0.28); stroke-width: 1.2; }
+  .fig .ah { fill: rgba(255,255,255,0.45); } .fig .ah.acc { fill: var(--accent); }
+  .fig .el { fill: var(--ink-3); font-size: 11.5px; }
+  .fig .node rect { fill: #13161B; stroke: rgba(255,255,255,0.22); }
+  .fig .node text { fill: var(--ink); font-size: 14px; }
+  .fig .node.traced rect { stroke: rgba(var(--accent-rgb), 0.7); fill: rgba(var(--accent-rgb), 0.08); }
+  .fig .ev { fill: var(--accent); }
+  .fig .legend text { fill: var(--ink-3); font-size: 12px; }
+  .fig .ax, .fig .tk { stroke: rgba(255,255,255,0.35); stroke-width: 1.2; }
+  .fig .tl, .fig .axis-cap { fill: var(--ink-3); font-size: 12px; }
+  .fig .stem { stroke: rgba(255,255,255,0.18); stroke-dasharray: 3 4; }
+  .fig .sig { fill: var(--bg); stroke: var(--accent); stroke-width: 2; } .fig .sig.late { fill: var(--accent); }
+  .fig .sn { fill: var(--ink); font-size: 14px; } .fig .sd { fill: var(--ink-3); font-size: 12px; }
+  .fig .sm { fill: #F0B06A; font-size: 11.5px; }
+  .fig .band rect { fill: rgba(255,255,255,0.02); stroke: rgba(255,255,255,0.14); }
+  .fig .band.agents rect { stroke: rgba(var(--accent-rgb), 0.55); fill: rgba(var(--accent-rgb), 0.06); }
+  .fig .band .bl { fill: var(--ink-3); font-size: 11px; letter-spacing: 0.16em; }
+  .fig .chipg rect { fill: #13161B; stroke: rgba(255,255,255,0.25); } .fig .chipg text { fill: var(--ink); font-size: 14px; }
+  .fig .band.agents .chipg rect { stroke: rgba(var(--accent-rgb), 0.6); }
+  .fig .obj { fill: var(--ink-2); font-size: 14px; }
+  .fig .loop { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 5 5; }
+  .fig .ll { fill: var(--accent); font-size: 12.5px; }
+  .post-cta { margin-top: 3em; padding-top: 28px; border-top: 1px solid var(--hair-2); display: grid; gap: 18px; }
+  .post-cta p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--ink-2); }
+  .mock-note { margin-top: 28px; font-size: 13px; color: var(--ink-3); }
+  @media (max-width: 900px) { .fig { margin-inline: 0; padding: 18px 16px 14px; } }
+  @media (max-width: 760px) { .prose { font-size: 17px; } }
+</style>
+<style>
+  .prose pre { margin: 1.6em 0; padding: 18px 20px; border: 1px solid var(--hair); border-radius: 12px; background: #0B0D11; overflow-x: auto; }
+  .prose pre code { font-family: var(--mono); font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+  .prose pre .k { color: var(--sky); } .prose pre .s { color: #C9E3A6; } .prose pre .n { color: #F0B06A; }
+  .prose ul { margin: 0 0 1.2em; padding-left: 1.1em; } .prose li { margin-bottom: 0.5em; }
+  .cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 1.8em -40px; }
+  .cat { border: 1px solid var(--hair); border-radius: 14px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; background: rgba(255,255,255,0.02); }
+  .cat h3 { margin: 0; font-size: 17px; font-weight: 500; color: var(--ink); display: flex; justify-content: space-between; gap: 8px; }
+  .cat h3 span { font-size: 12px; color: var(--accent); font-variant-numeric: tabular-nums; font-weight: 400; }
+  .cat p { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+  .cat .ex { color: var(--ink-3); }
+  .cat .fix { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+  .cat.human { border-color: rgba(var(--accent-rgb), 0.45); background: rgba(var(--accent-rgb), 0.06); }
+  .fig .box rect { fill: #13161B; stroke: rgba(255,255,255,0.22); } .fig .box text { fill: var(--ink); font-size: 13.5px; }
+  .fig .box .sub { fill: var(--ink-3); font-size: 11.5px; }
+  .fig .box.hidden rect { stroke-dasharray: 4 4; stroke: rgba(var(--accent-rgb), 0.7); fill: rgba(var(--accent-rgb), 0.06); }
+  .fig .box.key rect { stroke: rgba(var(--accent-rgb), 0.7); }
+  .fig .grid line { stroke: rgba(255,255,255,0.08); } .fig .diag { stroke: rgba(255,255,255,0.35); stroke-dasharray: 4 5; }
+  .fig .bar { fill: rgba(var(--accent-rgb), 0.35); } .fig .pt { fill: var(--accent); } .fig .curve { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .fig .gap { stroke: #F0B06A; stroke-width: 1.5; }
+  .fig .pyr path { stroke: rgba(255,255,255,0.18); } .fig .pyr text { fill: var(--ink); font-size: 14px; } .fig .pyr .sub { fill: var(--ink-3); font-size: 12px; }
+  @media (max-width: 900px) { .cats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: 0; } }
+  @media (max-width: 560px) { .cats { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="product" style="--accent: #7EB8FF; --accent-rgb: 126, 184, 255;">
+<header class="p-top">
+  <a class="brand" href="../../" aria-label="Rivio Labs">
+    <img src="../../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Blog"><a class="p-back" style="display:inline" href="../../#blog">← Blog</a></nav>
+</header>
+
+<main class="post">
+  <header class="post-head">
+    <p class="eyebrow">Avaliação</p>
+    <h1>Quando o auditor discorda do modelo</h1>
+    <p class="dek">Como medimos acerto em auditoria hospitalar quando a referência humana também erra.</p>
+    <p class="byline"><!-- MOCKUP [AUTOR · cargo] --><span class="mock">Nome do autor · Tech Lead do MAMBA</span><!-- MOCKUP [DATA] --><span class="mock">6 out 2026</span><span>Avaliação</span></p>
+  </header>
+
+  <article class="prose">
+    <p class="lead">Uma conta de internação cirúrgica tem uma diária de UTI cobrada no quarto dia. O agente de diárias do <a href="../../mamba/">MAMBA</a> procura no prontuário a evolução médica daquele dia e não encontra. Ele marca o item para revisão humana, com confiança média e impacto alto. O auditor que revisa a conta mantém a diária: o paciente estava na UTI, a folha de sinais vitais mostra isso, e a evolução ausente é uma falha de registro.</p>
+    <p>Três semanas depois, o demonstrativo da operadora volta. <!-- MOCKUP [CENÁRIO ILUSTRATIVO: substituir por caso real anonimizado, com o desfecho real] --><span class="mock">A operadora glosou a diária por falta de evolução do dia. O recurso, com a folha de sinais vitais anexada, reverteu a glosa 74 dias depois.</span></p>
+    <p>Se a operadora pagou, o auditor estava certo e o agente foi conservador demais. Se glosou por falta de evolução, o agente estava certo e o auditor custou dinheiro ao hospital. Se glosou e o recurso reverteu com a folha de sinais vitais, os dois estavam parcialmente certos, e a decisão ótima era outra: manter a diária e anexar a evidência antes do envio.</p>
+    <p>Esse caso resume o problema deste texto. Para melhorar um sistema de auditoria, precisamos saber quando ele erra. Para saber quando ele erra, precisamos de uma referência. E a referência mais disponível, a decisão do auditor humano, também erra, de formas que não são aleatórias.</p>
+    <p>No <a href="../o-rotulo-mais-caro-da-saude/">primeiro ensaio</a> descrevemos o ciclo de receita como uma fábrica de rótulos. Este texto é sobre o controle de qualidade dessa fábrica.</p>
+
+    <h2>O atalho tentador</h2>
+    <p>O caminho mais curto para avaliar um agente de auditoria é compará-lo ao auditor. O sinal é imediato, abundante e já existe: toda conta auditada por uma pessoa vira, de graça, um exemplo rotulado. Taxa de concordância com o auditor parece a métrica óbvia.</p>
+    <p>Ela tem três defeitos, e o terceiro é o mais sério.</p>
+    <p>O primeiro é variância. Dois auditores experientes, olhando a mesma conta, discordam em uma fração relevante dos itens. <!-- MOCKUP [DADO: concordância entre auditores numa amostra com dupla auditoria, idealmente kappa de Cohen por grupo de receita] --><span class="mock" title="Número de exemplo: concordância entre auditores numa amostra com dupla auditoria, idealmente kappa de Cohen por grupo de receita">Numa amostra de 240 contas com dupla auditoria, a concordância ficou em κ = 0,61 no geral, e abaixo de 0,5 em OPME e honorários.</span> Se a referência já varia tanto entre pessoas, concordância perfeita com uma delas não é um objetivo que faça sentido.</p>
+    <p>O segundo é viés sistemático. O auditor trabalha sob pressão de prazo, com centenas de itens por conta e uma fila que não para. O comportamento dele varia com a hora do turno, com o volume do dia e com a regra que ele aprendeu na última glosa. Um modelo treinado para imitar essas decisões aprende também esses vieses.</p>
+    <p>O terceiro é assimetria entre omissão e comissão. Quando o auditor exclui um item indevido, a decisão fica registrada. Quando ele deixa de incluir um item que estava no prontuário e não estava na conta, nada fica registrado, porque ele nunca viu o item. Esse é justamente o tipo de erro que custa receita ao hospital, e é invisível na comparação com o auditor. Pior: um agente que também não vê o item concorda com o auditor, e a métrica recompensa o erro compartilhado.</p>
+    <p>A consequência prática é que “concordância com o auditor” mede o quanto o agente se parece com a operação atual. Queremos medir o quanto o agente acerta a conta.</p>
+
+    <h2>A unidade certa é a decisão, não a conta</h2>
+    <p>Uma conta tem <!-- MOCKUP [DADO: nº médio de itens] --><span class="mock" title="Número de exemplo: nº médio de itens">180</span> itens. Dizer que o agente “acertou 92% das contas” esconde quase tudo: uma conta pode estar certa em 211 itens e errada no único item que valia R$ 3.480.</p>
+    <p>A unidade de avaliação que usamos é a decisão sobre um item, e cada decisão é registrada como um objeto na ontologia:</p>
+    <!-- VALIDAR: esquema real do decision trace na ontologia; o exemplo abaixo é ilustrativo -->
+<pre><code>{
+  <span class="k">"conta_id"</span>: <span class="s">"48213"</span>,
+  <span class="k">"item_id"</span>: <span class="s">"48213-117"</span>,
+  <span class="k">"agente"</span>: <span class="s">"mamba.diarias"</span>,
+  <span class="k">"acao"</span>: <span class="s">"revisao_humana"</span>,
+  <span class="k">"valor_em_jogo"</span>: <span class="n">1840.00</span>,
+  <span class="k">"confianca_declarada"</span>: <span class="n">0.62</span>,
+  <span class="k">"evidencias"</span>: [
+    {<span class="k">"fonte"</span>: <span class="s">"prontuario.evolucoes"</span>, <span class="k">"resultado"</span>: <span class="s">"ausente"</span>, <span class="k">"data_ref"</span>: <span class="s">"D4"</span>},
+    {<span class="k">"fonte"</span>: <span class="s">"principio.diarias.uti.v3"</span>, <span class="k">"trecho"</span>: <span class="s">"diária exige evolução do dia"</span>}
+  ],
+  <span class="k">"decisao_humana"</span>: {<span class="k">"acao"</span>: <span class="s">"manter"</span>, <span class="k">"justificativa"</span>: <span class="s">"sinais vitais comprovam permanência"</span>},
+  <span class="k">"desfecho"</span>: {<span class="k">"demonstrativo"</span>: <span class="n">null</span>, <span class="k">"recurso"</span>: <span class="n">null</span>}
+}</code></pre>
+    <p>Esse formato permite três coisas que a métrica por conta não permite. A avaliação passa a ser feita por tipo de ação: a precisão de exclusões e o recall de inclusões são métricas diferentes, com custos diferentes. O erro passa a ser ponderado por valor, porque errar um curativo e errar um stent não pesam igual. E o desfecho da operadora, quando chega semanas depois, é amarrado à decisão exata que o gerou.</p>
+    <p>Os custos são assimétricos, e a métrica precisa refletir isso. Uma exclusão indevida tira receita do hospital. Uma inclusão indevida vira glosa, recurso e desgaste com a operadora. Uma revisão humana desnecessária custa minutos de um especialista. Tratamos esses três erros com pesos diferentes, e os pesos são uma decisão de produto explícita, versionada junto com o resto.</p>
+
+    <h2>Coletar divergência sem contaminar o sinal</h2>
+    <p>Se o auditor vê a sugestão do agente antes de decidir, a concordância sobe por motivos que nada têm a ver com qualidade. Automation bias é um efeito bem documentado: pessoas tendem a aceitar a recomendação de uma máquina, principalmente sob pressão de tempo. Uma avaliação feita nessas condições mede o quanto o auditor confia no agente.</p>
+    <p>Por isso a coleta de divergências roda em modo sombra. <!-- VALIDAR: status em produção e desde quando --></p>
+    <p>O agente processa a conta e registra suas decisões sem mostrá-las. Contas em que o agente conclui que nenhuma intervenção humana seria necessária recebem uma marca interna de candidatas à automação, invisível para quem audita. O auditor trabalha normalmente. Depois da auditoria, comparamos item a item o que o agente teria feito com o que a pessoa fez.</p>
+<figure class="fig reveal">
+  <div class="fig-scroll"><svg viewBox="0 0 780 330" role="img" aria-labelledby="g1t">
+    <title id="g1t">Modo sombra: o agente decide sem mostrar, o auditor decide normalmente, e as duas decisões são comparadas e diagnosticadas</title>
+    <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="ah"/></marker></defs>
+    <g class="box "><rect x="20" y="125" width="110" height="56" rx="10"/><text x="75.0" y="153.0" text-anchor="middle" dominant-baseline="middle">Conta</text></g>
+    <g class="box hidden"><rect x="180" y="40" width="170" height="60" rx="10"/><text x="265.0" y="66.0" text-anchor="middle" dominant-baseline="middle">Agente decide</text><text class="sub" x="265.0" y="84.0" text-anchor="middle">sem mostrar ao auditor</text></g>
+    <g class="box "><rect x="180" y="210" width="170" height="60" rx="10"/><text x="265.0" y="236.0" text-anchor="middle" dominant-baseline="middle">Auditor decide</text><text class="sub" x="265.0" y="254.0" text-anchor="middle">justificativa obrigatória</text></g>
+    <g class="box key"><rect x="400" y="125" width="150" height="56" rx="10"/><text x="475.0" y="149.0" text-anchor="middle" dominant-baseline="middle">Comparação</text><text class="sub" x="475.0" y="167.0" text-anchor="middle">item a item</text></g>
+    <g class="box "><rect x="600" y="40" width="160" height="60" rx="10"/><text x="680.0" y="66.0" text-anchor="middle" dominant-baseline="middle">Divergências</text><text class="sub" x="680.0" y="84.0" text-anchor="middle">diagnóstico por camada</text></g>
+    <g class="box "><rect x="600" y="210" width="160" height="60" rx="10"/><text x="680.0" y="236.0" text-anchor="middle" dominant-baseline="middle">Concordâncias</text><text class="sub" x="680.0" y="254.0" text-anchor="middle">amostra vai a revisão</text></g>
+    <line class="e" x1="130" y1="140" x2="178" y2="80" marker-end="url(#a1)"/><line class="e" x1="130" y1="166" x2="178" y2="232" marker-end="url(#a1)"/>
+    <line class="e" x1="350" y1="72" x2="398" y2="140" marker-end="url(#a1)"/><line class="e" x1="350" y1="238" x2="398" y2="168" marker-end="url(#a1)"/>
+    <line class="e" x1="550" y1="140" x2="598" y2="80" marker-end="url(#a1)"/><line class="e" x1="550" y1="166" x2="598" y2="232" marker-end="url(#a1)"/>
+    <text class="el" x="680" y="300" text-anchor="middle">onde moram os erros compartilhados</text>
+    <text class="el" x="680" y="24" text-anchor="middle">dado · ferramenta · princípio · agente · auditor · ambiguidade</text>
+  </svg></div>
+  <figcaption><b>Figura 1.</b> Coleta em modo sombra. O auditor nunca vê a sugestão do agente, então a concordância não sobe por automation bias. As concordâncias também são amostradas, porque é nelas que os erros compartilhados se escondem.</figcaption>
+</figure>
+    <p>Dois detalhes fazem diferença.</p>
+    <p>O primeiro é que a justificativa é obrigatória em toda exclusão e em toda rejeição de sugestão. Sem ela, uma divergência vira um bit (“discordou”) e perde quase todo o valor diagnóstico. Com ela, a divergência chega com uma hipótese de causa escrita por quem conhece o caso.</p>
+    <p>O segundo é que o universo comparado inclui as contas em que o agente e o auditor concordaram. Parece redundante, mas é onde moram os erros compartilhados. Uma amostra aleatória das concordâncias vai para revisão independente, justamente para medir o que a comparação direta nunca mostra.</p>
+
+    <h2>Toda divergência tem um endereço</h2>
+    <p>Uma divergência sozinha não diz o que consertar. O passo mais importante do processo é diagnosticar cada uma até o componente que falhou. Usamos seis categorias.</p>
+    <div class="cats reveal"><div class="cat"><h3>Dado<!-- MOCKUP [DADO: distribuição real das divergências por categoria] --><span class="mock">38%</span></h3><p>A entrada estava errada ou incompleta.</p><p class="ex">Código interno do hospital no campo de código TUSS; unidade de medida convertida errado.</p><p class="fix">Integração e Hospital Twin</p></div><div class="cat"><h3>Ferramenta<!-- MOCKUP [DADO: distribuição real das divergências por categoria] --><span class="mock">27%</span></h3><p>A informação existia, mas não foi encontrada ou extraída.</p><p class="ex">O laudo estava na página 9 de um PDF misturado e o Atlas não o separou.</p><p class="fix">Atlas e pipeline de contexto</p></div><div class="cat"><h3>Princípio<!-- MOCKUP [DADO: distribuição real das divergências por categoria] --><span class="mock">14%</span></h3><p>O conhecimento de auditoria estava errado, incompleto ou com escopo errado.</p><p class="ex">Regra de diária válida para uma operadora aplicada a outra.</p><p class="fix">Base de princípios versionada</p></div><div class="cat"><h3>Agente<!-- MOCKUP [DADO: distribuição real das divergências por categoria] --><span class="mock">11%</span></h3><p>Contexto certo, raciocínio errado.</p><p class="ex">O agente leu a cláusula certa e concluiu o oposto.</p><p class="fix">Prompt, orquestração ou modelo</p></div><div class="cat human"><h3>Auditor<!-- MOCKUP [DADO: distribuição real das divergências por categoria] --><span class="mock">7%</span></h3><p>O agente estava certo.</p><p class="ex">Item de folha de sala que o auditor não incluiu.</p><p class="fix">Nada no agente; o caso entra no conjunto de referência</p></div><div class="cat"><h3>Ambiguidade real<!-- MOCKUP [DADO: distribuição real das divergências por categoria] --><span class="mock">3%</span></h3><p>As duas decisões são defensáveis com a evidência disponível.</p><p class="ex">Contrato com aditivo que contradiz a cláusula original.</p><p class="fix">Vira pendência explícita, e não palpite</p></div></div>
+    <p>Essa taxonomia mudou a forma como o time trabalha. Antes, uma discordância gerava a pergunta “o modelo está ruim?”. Agora gera “em qual camada está o problema?”. Na nossa experiência, <!-- MOCKUP [DADO: distribuição real das divergências por categoria, numa janela de N semanas] --><span class="mock" title="Número de exemplo: distribuição real das divergências por categoria, numa janela de N semanas">numa janela de oito semanas, 65% das divergências foram de dado ou de ferramenta, e 11% de raciocínio do agente.</span> O padrão que esperamos confirmar, e que aparece em outros times de IA vertical em saúde, é que a maior parte dos erros está em dado e em ferramenta, e uma fração menor no raciocínio do modelo. Se isso se confirmar, a maior alavanca de qualidade é a camada de contexto, e trocar de modelo resolve pouco.</p>
+    <p>A categoria “auditor” também merece uma nota. O propósito dela é específico: cada caso em que o agente acertou e a pessoa errou é o exemplo mais valioso do conjunto de avaliação. É ali que o sistema pode superar a operação atual, e é ali que a métrica de concordância puniria o agente por estar certo.</p>
+
+    <h2>Construindo uma referência melhor que qualquer auditor</h2>
+    <p>Com as divergências diagnosticadas, montamos o conjunto de referência em camadas, cada uma mais cara e mais confiável que a anterior.</p>
+    <p>A primeira camada é a decisão do auditor original, abundante e ruidosa.</p>
+    <p>A segunda é a dupla auditoria cega: uma amostra das divergências, e uma amostra aleatória das concordâncias, é auditada de novo por um segundo especialista que não vê nem a decisão do agente nem a do primeiro auditor.</p>
+    <p>A terceira é a adjudicação. Quando os dois auditores discordam, um especialista sênior decide com acesso a todas as evidências e registra o motivo. Quando nem ele consegue decidir, o item recebe o rótulo “indeterminado”. Esse rótulo importa, porque um sistema bem avaliado precisa aprender a reconhecer esses casos e abster-se neles.</p>
+    <p>A quarta é o desfecho da operadora. Ele chega tarde e tem vieses próprios: a operadora também erra, glosa por motivos que o contrato não sustenta, e o desfecho de recurso só existe para o que foi contestado. Usamos o desfecho como sinal de desempate e de monitoramento, nunca como verdade automática. Quando o desfecho contradiz a adjudicação, o caso volta para análise, e às vezes quem estava errado era a operadora.</p>
+<figure class="fig reveal">
+  <div class="fig-scroll"><svg viewBox="0 0 900 330" role="img" aria-labelledby="g3t">
+    <title id="g3t">Camadas do conjunto de referência, da mais abundante à mais confiável</title>
+    <g class="pyr"><path d="M190.0 30 L310.0 30 L365.0 94 L135.0 94 Z" style="fill: rgba(var(--accent-rgb), 0.27)"/><text x="250" y="67.0" text-anchor="middle">Desfecho da operadora</text><text class="sub" x="540" y="67.0">tardio, com vieses próprios · desempate e monitoramento</text><line class="stem" x1="373.0" y1="62.0" x2="530" y2="62.0"/><path d="M135.0 100 L365.0 100 L420.0 164 L80.0 164 Z" style="fill: rgba(var(--accent-rgb), 0.20)"/><text x="250" y="137.0" text-anchor="middle">Adjudicação</text><text class="sub" x="540" y="137.0">especialista sênior decide com toda a evidência, ou marca indeterminado</text><line class="stem" x1="428.0" y1="132.0" x2="530" y2="132.0"/><path d="M80.0 170 L420.0 170 L475.0 234 L25.0 234 Z" style="fill: rgba(var(--accent-rgb), 0.13)"/><text x="250" y="207.0" text-anchor="middle">Dupla auditoria cega</text><text class="sub" x="540" y="207.0">segundo especialista, sem ver agente nem primeiro auditor</text><line class="stem" x1="483.0" y1="202.0" x2="530" y2="202.0"/><path d="M25.0 240 L475.0 240 L530.0 304 L-30.0 304 Z" style="fill: rgba(var(--accent-rgb), 0.06)"/><text x="250" y="277.0" text-anchor="middle">Auditor original</text><text class="sub" x="540" y="277.0">abundante e ruidoso</text><line class="stem" x1="538.0" y1="272.0" x2="530" y2="272.0"/></g>
+    <text class="axis-cap" x="20" y="40">mais caro e</text><text class="axis-cap" x="20" y="56">mais confiável</text>
+    <text class="axis-cap" x="20" y="286">mais barato e</text><text class="axis-cap" x="20" y="302">mais ruidoso</text>
+  </svg></div>
+  <figcaption><b>Figura 3.</b> O conjunto de referência em camadas. Cada camada acima custa mais e erra menos. O rótulo “indeterminado” da adjudicação é parte do conjunto, porque o sistema precisa aprender a se abster.</figcaption>
+</figure>
+    <p>O conjunto de referência é versionado. Quando um contrato muda, uma parte dos rótulos adjudicados perde validade, e o conjunto precisa saber disso. Um gold set que envelhece sem aviso é pior do que nenhum, porque dá confiança errada.</p>
+
+    <h2>Confiança calibrada e o direito de não decidir</h2>
+    <p>Um agente que acerta 95% das decisões pode ser inútil se não souber quais são os 5% em que erra. O que torna o sistema operável é a calibração: quando o agente declara 90% de confiança, ele precisa acertar perto de 90% das vezes.</p>
+    <p>Medimos isso com diagramas de confiabilidade por grupo de receita. Agrupamos as decisões por faixa de confiança declarada e comparamos com a taxa de acerto no conjunto adjudicado. Um agente sistematicamente otimista manda casos arriscados direto para o faturamento. Um sistematicamente pessimista enche a fila humana e não escala.</p>
+<figure class="fig reveal">
+  <!-- MOCKUP [DADO: gráfico de calibração real, mesmo que imperfeito; ECE por grupo de receita]. Os pontos abaixo são ilustrativos. -->
+  <div class="fig-scroll"><svg viewBox="0 0 780 350" role="img" aria-labelledby="g2t">
+    <title id="g2t">Diagrama de confiabilidade ilustrativo: acerto observado abaixo da confiança declarada em todas as faixas</title>
+    <g class="grid"><line x1="130.0" y1="290.0" x2="130.0" y2="40.0"/><line x1="80.0" y1="240.0" x2="330.0" y2="240.0"/><line x1="179.99999999999997" y1="290.0" x2="179.99999999999997" y2="40.0"/><line x1="80.0" y1="190.00000000000003" x2="330.0" y2="190.00000000000003"/><line x1="230.00000000000003" y1="290.0" x2="230.00000000000003" y2="40.0"/><line x1="80.0" y1="139.99999999999997" x2="330.0" y2="139.99999999999997"/><line x1="280.0" y1="290.0" x2="280.0" y2="40.0"/><line x1="80.0" y1="90.0" x2="330.0" y2="90.0"/><line x1="330.0" y1="290.0" x2="330.0" y2="40.0"/><line x1="80.0" y1="40.0" x2="330.0" y2="40.0"/></g>
+    <line class="diag" x1="80.0" y1="290.0" x2="330.0" y2="40.0"/>
+    <path class="curve" d="M105.0 280.0 L155.0 250.0 L205.0 220.0 L255.0 185.0 L305.0 140.0"/><line class="gap" x1="105.00000000000003" y1="265.0" x2="105.00000000000003" y2="280.0"/><circle class="pt" cx="105.00000000000003" cy="280.0" r="5"/><line class="gap" x1="155.0" y1="215.0" x2="155.0" y2="250.00000000000003"/><circle class="pt" cx="155.0" cy="250.00000000000003" r="5"/><line class="gap" x1="205.0" y1="165.0" x2="205.0" y2="220.0"/><circle class="pt" cx="205.0" cy="220.0" r="5"/><line class="gap" x1="255.0" y1="115.0" x2="255.0" y2="185.0"/><circle class="pt" cx="255.0" cy="185.0" r="5"/><line class="gap" x1="305.0" y1="65.00000000000003" x2="305.0" y2="139.99999999999997"/><circle class="pt" cx="305.0" cy="139.99999999999997" r="5"/><text class="tl" x="80.0" y="308" text-anchor="middle">50%</text><text class="tl" x="70" y="294.0" text-anchor="end">50%</text><text class="tl" x="130.0" y="308" text-anchor="middle">60%</text><text class="tl" x="70" y="244.0" text-anchor="end">60%</text><text class="tl" x="179.99999999999997" y="308" text-anchor="middle">70%</text><text class="tl" x="70" y="194.00000000000003" text-anchor="end">70%</text><text class="tl" x="230.00000000000003" y="308" text-anchor="middle">80%</text><text class="tl" x="70" y="143.99999999999997" text-anchor="end">80%</text><text class="tl" x="280.0" y="308" text-anchor="middle">90%</text><text class="tl" x="70" y="94.0" text-anchor="end">90%</text><text class="tl" x="330.0" y="308" text-anchor="middle">100%</text><text class="tl" x="70" y="44.0" text-anchor="end">100%</text>
+    <text class="axis-cap" x="205.0" y="332" text-anchor="middle">confiança declarada pelo agente</text>
+    <text class="axis-cap" x="24" y="165.0" transform="rotate(-90 24 165.0)" text-anchor="middle">acerto no conjunto adjudicado</text>
+    <text class="el" x="295.0" y="55.0" text-anchor="end">calibração perfeita</text>
+    <g transform="translate(410 0)">
+      <text class="axis-cap" x="0" y="44.0">Grupo de receita: diárias · exemplo</text>
+      <text class="sn" x="0" y="80.0">ECE <!-- MOCKUP [DADO: ECE por grupo de receita] -->0,11 · exemplo</text>
+      <text class="sd" x="0" y="102.0">o agente declara mais confiança do que entrega</text>
+      <line class="gap" x1="0" y1="132.0" x2="24" y2="132.0"/><text class="sd" x="32" y="136.0">distância até a diagonal</text>
+    </g>
+  </svg></div>
+  <figcaption><b>Figura 2.</b> Diagrama de confiabilidade com dados de exemplo. Um agente otimista como este mandaria casos arriscados direto para o faturamento. A meta é colar a curva na diagonal, grupo de receita por grupo de receita.</figcaption>
+</figure>
+    <p>Com confiança calibrada, o roteamento vira uma conta explícita. Para cada decisão, o custo esperado de deixar o agente decidir sozinho é a probabilidade de erro multiplicada pelo valor em jogo, ajustada pela assimetria do tipo de erro. Se esse custo passa do custo de uma revisão humana, o item vai para uma pessoa. Uma diária de UTI com confiança média e R$ 1.840 em jogo vai para revisão. Um curativo com confiança alta e R$ 12 em jogo, não.</p>
+    <p>Isso conecta a pesquisa à métrica de negócio de forma direta. O share de automação, a fração de contas encerradas sem intervenção humana, é a cobertura do sistema num ponto de operação da curva de cobertura por acurácia. Subir o share de automação sem subir a curva inteira significa apenas aceitar mais erro. Subir a curva significa que o sistema aprendeu. Acompanhamos as duas coisas juntas, sempre. <!-- MOCKUP [DADO: share de automação atual e meta; curva cobertura × acurácia por cluster] --><span class="mock" title="Número de exemplo: share de automação atual e meta; curva cobertura × acurácia por cluster">Hoje o share de automação está em 18%, com meta de 30% até o fim do ano.</span></p>
+
+    <h2>Métricas que não se deixam enganar</h2>
+    <p>Qualquer métrica isolada é fácil de otimizar do jeito errado. Por isso acompanhamos um conjunto que se vigia mutuamente:</p>
+    <ul>
+      <li><strong>Acurácia ponderada por valor no conjunto adjudicado</strong>, separada por tipo de ação.</li>
+      <li><strong>Cobertura</strong>, ou seja, o share de decisões tomadas sem humano, sempre ao lado da acurácia.</li>
+      <li><strong>Edição pós-automação</strong>, a fração de contas encerradas automaticamente que alguém depois precisou corrigir.</li>
+      <li><strong>Erro de calibração</strong> por grupo de receita.</li>
+      <li><strong>Taxa de glosa inicial e final</strong> nas contas automatizadas, comparada às auditadas por pessoas, como anti-métrica.</li>
+      <li><strong>Divergências por categoria ao longo do tempo.</strong> Se a fração de erros de dado cai, a camada de contexto está melhorando. Se a de princípio sobe depois de um novo cliente, a base de conhecimento não está transferindo.</li>
+    </ul>
+    <p>Nenhuma dessas métricas decide sozinha se uma mudança vai para produção. Uma alteração que sobe a cobertura e piora a calibração não passa.</p>
+
+    <h2>O que ainda não resolvemos</h2>
+    <p><strong>Pontos cegos compartilhados.</strong> A amostra aleatória de concordâncias pega parte dos erros que agente e auditor cometem juntos. Não pega todos, e não sabemos estimar bem quantos escapam. A omissão de itens que ninguém viu continua sendo o erro mais caro e o mais difícil de medir.</p>
+    <p><strong>Onde gastar o especialista.</strong> Adjudicação é o recurso mais escasso do processo. Cada hora de um auditor sênior precisa ir para a divergência que mais ensina ao sistema. Isso é um problema de active learning com custo de rotulagem alto e distribuição que muda a cada novo hospital.</p>
+    <p><strong>Referência que envelhece.</strong> Operadoras mudam critério sem aviso. Um rótulo correto em março pode estar errado em setembro. Detectar essa deriva no conjunto de referência antes que ela contamine a avaliação ainda é trabalho em aberto.</p>
+    <p><strong>Calibração que transfere.</strong> Um agente calibrado num hospital pode ficar otimista em outro, com prontuários escritos de outra forma. Recalibrar por instituição resolve, mas custa conjunto adjudicado novo a cada implantação. Queremos que a calibração transfira pela ontologia, e ainda não sabemos o quanto isso é possível.</p>
+
+    <div class="post-cta">
+      <h2 style="margin:0">Para quem é isto</h2>
+      <p>Se você já desconfiou de um benchmark porque sabia que o rótulo estava errado, este é o seu tipo de problema. Aqui, o rótulo errado custa dinheiro a um hospital, e o trabalho de consertá-lo está no centro do produto. Buscamos engenheiras, engenheiros, pesquisadoras e pesquisadores de todas as senioridades, e estudantes que queiram trabalhar em avaliação, calibração e sistemas multiagente com dado real.</p>
+      <a class="btn" href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Ver oportunidades <span aria-hidden="true">→</span></a>
+    </div>
+  </article>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../../#termos">Termos de Uso</a> e à <a href="../../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../../#blog">Blog</a></li>
+      <li><a href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+<script>
+  document.documentElement.classList.add("js");
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>

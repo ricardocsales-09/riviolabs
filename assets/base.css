@@ -1,0 +1,57 @@
+/* Rivio Labs: tokens and pieces shared by every page */
+:root {
+  color-scheme: dark;
+  --bg: #0E1014;
+  --bg-2: #16181D;
+  --ink: #FFFFFF;
+  --ink-2: rgba(255,255,255,0.62);
+  --ink-3: rgba(255,255,255,0.42);
+  --hair: rgba(255,255,255,0.10);
+  --hair-2: rgba(255,255,255,0.22);
+  --blue: #0575E6;
+  --sky: #7EB8FF;
+  --lilac: #B08CF0;
+  --attention: #E08A2E;
+  --panel: #0B0D11;
+  --accent: var(--sky);
+  --accent-rgb: 126, 184, 255;
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --font: "Funnel Display", "Inter", system-ui, -apple-system, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --gutter: clamp(16px, 2.4vw, 32px);
+}
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.4;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; transition: color 160ms var(--ease); }
+a:hover { color: var(--sky); }
+:focus-visible { outline: 1.5px solid var(--sky); outline-offset: 3px; border-radius: 4px; }
+
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { height: 22px; width: auto; display: block; }
+.brand .labs {
+  font-size: 15px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-2); padding-left: 12px; border-left: 1px solid var(--hair-2); line-height: 1;
+}
+
+.linkbtn {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer;
+  transition: color 160ms var(--ease);
+}
+.linkbtn:hover { color: var(--sky); }
+.linkbtn[aria-expanded="true"] { color: var(--ink); }
+
+.fine { font-size: 13px; color: var(--ink-3); max-width: 30rem; margin: 0; }
+.fine a { color: var(--ink-2); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 0; color: var(--ink-2); justify-content: flex-end; margin: 0; padding: 0; }
+.foot-links li { list-style: none; display: inline-flex; }
+.foot-links li + li::before { content: "·"; color: var(--ink-3); padding-inline: 10px; }

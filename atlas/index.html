@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atlas · Rivio Labs</title>
+<meta name="description" content="A camada que lê e interpreta toda a documentação do hospital, digital ou em papel, e a converte em fatos com fonte para pessoas e agentes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/product.css">
+</head>
+<body class="product" data-project="atlas" style="--accent: #E9E1CF; --accent-rgb: 233, 225, 207;">
+<header class="p-top">
+  <a class="brand" href="../" aria-label="Rivio Labs">
+    <img src="../assets/rivio.png" alt="Rivio" width="58" height="22">
+    <span class="labs">Labs</span>
+  </a>
+  <nav aria-label="Projetos">
+    <ul class="p-index"></ul>
+    <a class="p-back" href="../">← Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <canvas data-visual="pages" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow">Atlas</p>
+      <h1>O hospital escreve em mil formatos. O Atlas lê todos</h1>
+      <p class="lede">A camada que lê e interpreta toda a documentação do hospital, digital ou em papel, e a converte em fatos com fonte para pessoas e agentes.</p>
+      <span class="cue">Role para explorar</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s1">
+    <div class="label-col"><p class="label" id="s1"><b>01</b> A tese</p></div>
+    <div class="body-col"><p class="statement reveal">A verdade de um atendimento está espalhada em documentos: a guia de autorização, a evolução médica, o laudo assinado, a etiqueta do implante com seu lote, o formulário de prorrogação preenchido à mão, com o carimbo por cima da assinatura. Muitos chegam escaneados e misturados num mesmo arquivo. <span>Nenhum agente decide bem sobre o que não consegue ler. O Atlas converte essa documentação em fatos com fonte.</span></p></div>
+  </section>
+
+  <section class="section" aria-labelledby="s2">
+    <div class="label-col"><p class="label" id="s2"><b>02</b> O que muda</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que o OCR não lê</h2>
+      <ol class="pillars reveal">
+        <li><span class="n">01</span><h3>Entende o que está lendo</h3><p>Separa e classifica cada documento dentro de um arquivo, mesmo com páginas fora de ordem, reemitidas ou parecidas entre si.</p></li>
+        <li><span class="n">02</span><h3>Extração especializada</h3><p>Sabe o que importa em cada documento: datas, assinaturas, códigos, lotes, quantidades e justificativas.</p></li>
+        <li><span class="n">03</span><h3>Fatos com significado</h3><p>Cada informação aponta para a página de onde veio e ganha contexto: o código resolvido, o preço conferido com o contrato.</p></li>
+        <li><span class="n">04</span><h3>Melhora medindo</h3><p>Cada ajuste é testado contra casos reais validados pela operação antes de entrar em produção.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s3">
+    <div class="label-col"><p class="label" id="s3"><b>03</b> Na prática</p><p class="caption">Cenário ilustrativo</p></div>
+    <div class="body-col">
+      <h2 class="reveal">Uma página escaneada, lida como um especialista lê</h2>
+      <div class="module m-doc">
+        <div class="module-head"><span><strong>Arquivo recebido:</strong> 11 páginas, 6 documentos misturados</span><span class="caption">Página 3 de 11</span></div>
+        <div class="stage">
+          <div class="paper" aria-hidden="true">
+            <div class="ttl"><span>Guia de solicitação de internação</span><span>Nº 00482</span></div>
+            <div class="kv"><span>Data da solicitação</span><span>14/08/2026</span></div>
+            <div class="kv"><span>Caráter</span><span>Eletivo</span></div>
+            <div class="kv"><span>Procedimento</span><span>Artroplastia total de joelho</span></div>
+            <div class="kv"><span>Indicação clínica</span><span class="hand">Gonartrose avançada à direita</span></div>
+            <div class="ln" style="width: 92%"></div><div class="ln" style="width: 78%"></div><div class="ln" style="width: 85%"></div>
+            <div class="sign"><div><svg viewBox="0 0 120 30" width="96" height="24" aria-hidden="true"><path d="M3 20 C 12 4, 18 26, 26 14 S 38 6, 44 18 S 58 24, 64 10 C 68 4, 72 22, 80 16 S 98 8, 116 14" fill="none" stroke="#2B2B2B" stroke-width="1.6" stroke-linecap="round"/></svg><br>Assinatura do médico</div><div><br><br>Assinatura do beneficiário</div></div>
+            <div class="stamp">AUTORIZADO<br>OPERADORA</div>
+            <span class="scan"></span>
+          </div>
+          <div class="out">
+            <div class="rec"><span>Tipo</span><span>Guia de solicitação de internação</span></div>
+            <div class="rec"><span>Páginas</span><span>3 e 4 de 11</span></div>
+            <div class="rec"><span>Data</span><span class="mono">2026-08-14</span></div>
+            <div class="rec"><span>Procedimento</span><span>Artroplastia total de joelho</span></div>
+            <div class="rec"><span>Assinatura do médico</span><span><span class="chip ok">Presente</span></span></div>
+            <div class="rec"><span>Assinatura do beneficiário</span><span><span class="chip warn">Ausente · vira pendência</span></span></div>
+            <div class="rec"><span>Autorização</span><span><span class="chip accent">Carimbo detectado</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s4">
+    <div class="label-col"><p class="label" id="s4"><b>04</b> Antes e depois</p></div>
+    <div class="body-col">
+      <div class="compare reveal">
+        <div><h3>Hoje</h3><ul>
+          <li>Auditores abrem arquivos de dezenas de páginas, PDF por PDF, para achar uma assinatura, uma data ou o lote de um implante</li>
+          <li>Guia escaneada torta, carimbo sobre a assinatura, letra de mão: o OCR devolve texto, e alguém ainda precisa interpretar</li>
+          <li>O laudo que faltava só aparece quando a operadora glosa a conta, semanas depois</li>
+        </ul></div>
+        <div><h3>Com o Atlas</h3><ul>
+          <li>Separação e classificação de cada documento dentro do arquivo, com extração por tipo e confiança por campo</li>
+          <li>Cada fato ligado à página de origem e resolvido contra código, tabela e contrato</li>
+          <li>Configuração de extração por hospital, operadora e tipo de documento, testada contra casos validados antes de ir para produção</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problemas em aberto: oculto por enquanto. Remova o atributo hidden para voltar a exibir. -->
+  <section class="section" aria-labelledby="s5" hidden>
+    <div class="label-col"><p class="label" id="s5"><b>05</b> Problemas em aberto</p></div>
+    <div class="body-col">
+      <h2 class="reveal">O que ainda não está resolvido</h2>
+      <ol class="problems reveal">
+        <li><h3>Arquivos sem estrutura</h3><p>Separar, ordenar e classificar dezenas de documentos misturados, com guias reemitidas e páginas avulsas.</p></li>
+        <li><h3>Ausente ou ilegível?</h3><p>Num formulário escrito à mão, com carimbo sobre a assinatura, saber a diferença e dizer com que confiança.</p></li>
+        <li><h3>Otimizar com poucos exemplos</h3><p>Melhorar a extração de um tipo de documento que tem um único exemplo validado, sem decorar esse exemplo.</p></li>
+        <li><h3>O papel contra o sistema</h3><p>Reconciliar o que está no documento com o que está no ERP, quando um número foi preenchido no campo errado.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="cta reveal">
+      <h2>Construa o Atlas com a gente</h2>
+      <p>Aqui a pesquisa acontece dentro de uma operação real: cada conta auditada, cada glosa revertida e cada demonstrativo que volta da operadora vira rótulo.</p>
+      <a class="btn" href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Ver oportunidades <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="next" href="../">Todos os projetos</a>
+  </section>
+</main>
+
+<footer class="p-foot">
+  <p class="fine">O Rivio Labs é a casa da pesquisa em IA da Rivio. O uso está sujeito aos <a href="../#termos">Termos de Uso</a> e à <a href="../#privacidade">Política de Privacidade</a> do Rivio Labs.</p>
+  <nav aria-label="Rodapé">
+    <ul class="foot-links">
+      <li><a href="../#blog">Blog</a></li>
+      <li><a href="https://rivio-kvsite-v2.pages.dev/carreiras" target="_blank" rel="noopener">Carreiras</a></li>
+      <li><a href="https://www.linkedin.com/company/riviotech/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="../assets/projects.js"></script>
+<script src="../assets/product.js"></script>
+<script src="../assets/fields.js"></script>
+</body>
+</html>
