@@ -106,7 +106,7 @@
   </header>
 
   <article class="prose">
-    <p class="lead">Uma conta de internação cirúrgica tem uma diária de UTI cobrada no quarto dia. O agente de diárias do <a href="../../mamba/">MAMBA</a> procura no prontuário a evolução médica daquele dia e não encontra. Ele marca o item para revisão humana, com confiança média e impacto alto. O auditor que revisa a conta mantém a diária: o paciente estava na UTI, a folha de sinais vitais mostra isso, e a evolução ausente é uma falha de registro.</p>
+    <p class="lead">Uma conta de internação cirúrgica tem uma diária de UTI cobrada no quarto dia. O agente que o orquestrador do <a href="../../mamba/">MAMBA</a> abre para as diárias dessa conta procura no prontuário a evolução médica daquele dia e não encontra. Ele marca o item para revisão humana, com confiança média e impacto alto. O auditor que revisa a conta mantém a diária: o paciente estava na UTI, a folha de sinais vitais mostra isso, e a evolução ausente é uma falha de registro.</p>
     <p>Três semanas depois, o demonstrativo da operadora volta. <!-- MOCKUP [CENÁRIO ILUSTRATIVO: substituir por caso real anonimizado, com o desfecho real] --><span class="mock">A operadora glosou a diária por falta de evolução do dia. O recurso, com a folha de sinais vitais anexada, reverteu a glosa 74 dias depois.</span></p>
     <p>Se a operadora pagou, o auditor estava certo e o agente foi conservador demais. Se glosou por falta de evolução, o agente estava certo e o auditor custou dinheiro ao hospital. Se glosou e o recurso reverteu com a folha de sinais vitais, os dois estavam parcialmente certos, e a decisão ótima era outra: manter a diária e anexar a evidência antes do envio.</p>
     <p>Esse caso resume o problema deste texto. Para melhorar um sistema de auditoria, precisamos saber quando ele erra. Para saber quando ele erra, precisamos de uma referência. E a referência mais disponível, a decisão do auditor humano, também erra, de formas que não são aleatórias.</p>
@@ -127,7 +127,7 @@
 <pre><code>{
   <span class="k">"conta_id"</span>: <span class="s">"48213"</span>,
   <span class="k">"item_id"</span>: <span class="s">"48213-117"</span>,
-  <span class="k">"agente"</span>: <span class="s">"mamba.diarias"</span>,
+  <span class="k">"agente"</span>: <span class="s">"mamba.orquestrador/diarias"</span>,
   <span class="k">"acao"</span>: <span class="s">"revisao_humana"</span>,
   <span class="k">"valor_em_jogo"</span>: <span class="n">1840.00</span>,
   <span class="k">"confianca_declarada"</span>: <span class="n">0.62</span>,

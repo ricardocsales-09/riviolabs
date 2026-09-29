@@ -1,7 +1,7 @@
 // The six Rivio Labs projects. The home list and the product pages both read from here.
 window.RIVIO_PROJECTS = [
   { id: "mamba", name: "MAMBA", title: "Multi-Agent Medical Billing Audit",
-    text: "Agentes especialistas auditam cada conta contra prontuário, contrato e princípios de auditoria. Cada ajuste chega com evidência e impacto financeiro, antes do faturamento.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.26, gate: 0.52 } },
+    text: "Um orquestrador de agentes audita cada conta contra prontuário, contrato e princípios de auditoria. Cada ajuste chega com evidência e impacto financeiro, antes do faturamento.", mode: { flow: 1.25, swirl: 1.1, glosa: 0.26, gate: 0.52 } },
   { id: "automata", name: "Automata", title: "Agentes que operam qualquer interface web",
     text: "Uma demonstração humana vira automação de portal: um replay determinístico e um agente que segue quando a tela muda. Cada tarefa roda em lote, com evidência de cada passo.", mode: { flow: 1.5, swirl: 0.6, glosa: 0.2, gate: 0.66 } },
   { id: "denial-intelligence", name: "Denial Intelligence", title: "Inteligência agêntica sobre glosas",
